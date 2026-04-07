@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started — Midas Touch Partners</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections/get-started.css">
+
+  <!-- Google Fonts for matching How We Work style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@700&family=Inter:ital,wght@0,100..900;1,100..900&family=Archivo+Black&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo"><img src="assets/images/mtp-logo-white.png" alt="Midas Touch Partners"></a>
+      <nav class="header__nav">
+        <a href="cases.html" class="header__link">Cases</a>
+        <a href="how-we-work.html" class="header__link">How We Work</a>
+        <a href="about.html" class="header__link">About</a>
+        <a href="get-started.html" class="btn btn--primary">Get Started</a>
+      </nav>
+      <button class="header__toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="header__mobile-nav">
+      <a href="cases.html" class="header__link">Cases</a>
+      <a href="how-we-work.html" class="header__link">How We Work</a>
+      <a href="about.html" class="header__link">About</a>
+      <a href="get-started.html" class="header__link">Get Started</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero & Form Section -->
+    <section class="section getstarted bg-surface" style="padding-top: calc(var(--space-section) + 60px);">
+      <div class="section__inner getstarted__container">
+
+        <!-- Left: Copy -->
+        <div class="getstarted__copy reveal">
+          <p class="text-label text-red">FREE STRATEGY AUDIT</p>
+          <h1 class="text-display getstarted__headline">Let's See If TikTok Can Work For Your <span class="text-red">Brand</span></h1>
+          <p class="getstarted__subtext">No pitch deck. No commitment. Just a 15-minute data review to see if there's an opportunity worth exploring.</p>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="getstarted__form-container reveal reveal-delay-2">
+          <div class="getstarted__form-card">
+
+            <!-- Success State (Initially Hidden) -->
+            <div id="success-state" class="getstarted__success" style="display: none;">
+              <h2 class="getstarted__success-title">GOT IT.</h2>
+              <p class="getstarted__success-text">We'll review your brand and reach out within 48 hours.</p>
+              <a href="index.html" class="btn btn--ghost getstarted__back-btn">← BACK TO HOME</a>
+            </div>
+
+            <!-- Form (Initially Visible) -->
+            <form id="contact-form" class="getstarted__form" action="https://script.google.com/macros/s/AKfycbwBjRsNbqdfyS5zs5Fd-dH_4gZ1KgIggvipJLYx9ZpxeF7gOF-KmGVdto_0WelGmj2E/exec" method="POST">
+
+              <div class="getstarted__field">
+                <label class="getstarted__label">Your Name</label>
+                <input required type="text" name="name" class="getstarted__input">
+              </div>
+
+              <div class="getstarted__field">
+                <label class="getstarted__label">Email</label>
+                <input required type="email" name="email" class="getstarted__input">
+              </div>
+
+              <div class="getstarted__field">
+                <label class="getstarted__label">Phone / WhatsApp <span class="getstarted__optional">(Optional)</span></label>
+                <input type="tel" name="phone" class="getstarted__input">
+              </div>
+
+              <div class="getstarted__field">
+                <label class="getstarted__label">Company / Brand Name</label>
+                <input required type="text" name="company" class="getstarted__input">
+              </div>
+
+              <div class="getstarted__field">
+                <label class="getstarted__label">Website or TikTok Shop URL</label>
+                <input required type="text" name="website" class="getstarted__input" placeholder="https://example.com or @tiktok-handle">
+              </div>
+
+              <div class="getstarted__radio-group">
+                <label class="getstarted__label">What best describes you?</label>
+                <div class="getstarted__radio-options">
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="brandType" value="DTC Brand (US-based)" class="getstarted__radio">
+                    <span class="getstarted__radio-text">DTC Brand (US-based)</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="brandType" value="Chinese Brand Entering US Market" class="getstarted__radio">
+                    <span class="getstarted__radio-text">Chinese Brand Entering US Market</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="brandType" value="E-commerce / Amazon Seller" class="getstarted__radio">
+                    <span class="getstarted__radio-text">E-commerce / Amazon Seller</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="brandType" value="Agency / Reseller" class="getstarted__radio">
+                    <span class="getstarted__radio-text">Agency / Reseller</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="brandType" value="Other" class="getstarted__radio">
+                    <span class="getstarted__radio-text">Other</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="getstarted__radio-group">
+                <label class="getstarted__label">Monthly TikTok Budget Range</label>
+                <div class="getstarted__radio-options">
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="budget" value="Not yet started (< $5K)" class="getstarted__radio">
+                    <span class="getstarted__radio-text">Not yet started (< $5K)</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="budget" value="$5K — $15K / month" class="getstarted__radio">
+                    <span class="getstarted__radio-text">$5K — $15K / month</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="budget" value="$15K — $50K / month" class="getstarted__radio">
+                    <span class="getstarted__radio-text">$15K — $50K / month</span>
+                  </label>
+                  <label class="getstarted__radio-option">
+                    <input required type="radio" name="budget" value="$50K+ / month" class="getstarted__radio">
+                    <span class="getstarted__radio-text">$50K+ / month</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="getstarted__submit-section">
+                <button type="submit" class="getstarted__submit">REQUEST FREE AUDIT →</button>
+                <p class="getstarted__submit-note">We'll review your brand within 48 hours and reply by email.</p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- What Happens Next -->
+    <section class="section getstarted__process bg-surface">
+      <div class="section__inner">
+        <div class="getstarted__process-grid">
+
+          <div class="getstarted__process-item reveal">
+            <div class="getstarted__process-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="21 21l-4.35-4.35"></path>
+              </svg>
+            </div>
+            <div class="getstarted__process-content">
+              <div class="getstarted__process-number text-red">01 —</div>
+              <h3 class="getstarted__process-title">REVIEW</h3>
+              <p class="getstarted__process-desc">We analyze your brand, product, and current TikTok presence within 48 hours.</p>
+            </div>
+          </div>
+
+          <div class="getstarted__process-item reveal reveal-delay-2">
+            <div class="getstarted__process-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+              </svg>
+            </div>
+            <div class="getstarted__process-content">
+              <div class="getstarted__process-number text-purple">02 —</div>
+              <h3 class="getstarted__process-title">ASSESSMENT</h3>
+              <p class="getstarted__process-desc">You receive a personalized strategy brief with specific opportunities we've identified.</p>
+            </div>
+          </div>
+
+          <div class="getstarted__process-item reveal reveal-delay-3">
+            <div class="getstarted__process-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div class="getstarted__process-content">
+              <div class="getstarted__process-number text-cyan">03 —</div>
+              <h3 class="getstarted__process-title">CALL</h3>
+              <p class="getstarted__process-desc">If there's mutual fit, we schedule a 30-min call to discuss a concrete action plan.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section getstarted__faq bg-surface-low">
+      <div class="section__inner">
+        <h2 class="getstarted__faq-title reveal">FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="getstarted__faq-list">
+
+          <div class="getstarted__faq-item reveal reveal-delay-1">
+            <button class="getstarted__faq-toggle" data-faq="0">
+              <span class="getstarted__faq-question">Is this actually free?</span>
+              <span class="getstarted__faq-icon">+</span>
+            </button>
+            <div class="getstarted__faq-answer" data-faq-content="0">
+              <p>Yes. The audit is completely free with no strings attached. We only take on brands where we're confident we can deliver results — the audit helps both sides figure that out.</p>
+            </div>
+          </div>
+
+          <div class="getstarted__faq-item reveal reveal-delay-2">
+            <button class="getstarted__faq-toggle" data-faq="1">
+              <span class="getstarted__faq-question">What if my budget is small?</span>
+              <span class="getstarted__faq-icon">+</span>
+            </button>
+            <div class="getstarted__faq-answer" data-faq-content="1">
+              <p>We work with brands at different stages. Even if you're pre-launch, the audit will give you a clear picture of what's possible and what budget you'd need to see real results.</p>
+            </div>
+          </div>
+
+          <div class="getstarted__faq-item reveal reveal-delay-3">
+            <button class="getstarted__faq-toggle" data-faq="2">
+              <span class="getstarted__faq-question">Will you spam me?</span>
+              <span class="getstarted__faq-icon">+</span>
+            </button>
+            <div class="getstarted__faq-answer" data-faq-content="2">
+              <p>No. You'll get one email with your assessment. If we're not a fit, that's it — no drip campaigns, no follow-up calls.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Alternative Contact -->
+    <section class="section getstarted__contact bg-surface">
+      <div class="section__inner">
+        <p class="getstarted__contact-text">
+          Prefer email? Reach us directly at <a href="mailto:business@midastouch.partners" class="getstarted__contact-link">business@midastouch.partners</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__brand-name"><img src="assets/images/mtp-logo-white.png" alt="Midas Touch Partners"></div>
+      </div>
+      <div class="footer__links">
+        <a href="cases.html" class="footer__link">Cases</a>
+        <a href="how-we-work.html" class="footer__link">How We Work</a>
+        <a href="get-started.html" class="footer__link">Get Started</a>
+      </div>
+      <p class="footer__copyright">&copy; 2026 Midas Touch Partners. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

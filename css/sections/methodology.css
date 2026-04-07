@@ -1,0 +1,390 @@
+/* ========================================
+   S7: METHODOLOGY — 4-phase system (Gemini Style)
+   ======================================== */
+
+.methodology {
+  padding: 6rem 0;
+  background-color: #131313;
+}
+
+.methodology__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding: 0 clamp(24px, 4vw, 80px);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .methodology__header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.methodology__intro {
+  max-width: 32rem;
+}
+
+.methodology__label {
+  background-color: #05ECE7;
+  color: #006764;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.methodology__title {
+  font-family: 'Inter', sans-serif; /* Inter字体 */
+  font-size: clamp(3rem, 6vw, 6rem); /* 响应式字号 */
+  font-weight: 900; /* 最粗字重 */
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em; /* 略微紧缩字间距 */
+  color: white; /* 白色 */
+  text-transform: uppercase; /* 全大写 */
+  margin-bottom: 1.5rem; /* 下边距 */
+}
+
+.methodology__description {
+  font-size: 1.125rem; /* 与card-text保持一致 */
+  font-weight: 500;
+  line-height: 1.6;
+  color: #e6bcbd;
+  max-width: 36rem;
+}
+
+.methodology__watermark {
+  display: none;
+  text-align: right;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .methodology__watermark {
+    display: block;
+  }
+}
+
+.methodology__watermark span {
+  font-size: 8rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #2A2A2A;
+  letter-spacing: -0.025em;
+  user-select: none;
+}
+
+/* Grid */
+.methodology__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid #353534;
+  border-bottom: 1px solid #353534;
+}
+
+@media (min-width: 768px) {
+  .methodology__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .methodology__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Phase Cards */
+.methodology__phase {
+  border-right: 1px solid #353534;
+  min-height: 40.625rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #1C1B1B;
+  transition: background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.methodology__phase:last-child {
+  border-right: none;
+}
+
+.methodology__phase:hover {
+  background-color: #353534;
+}
+
+.methodology__phase--validation {
+  background-color: #201F1F;
+}
+
+.methodology__phase--scaling {
+  background-color: #2A2A2A;
+}
+
+.methodology__phase--system {
+  background-color: #131313;
+}
+
+/* Phase Content */
+.methodology__phase-content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+.methodology__phase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.methodology__phase-number {
+  font-family: 'Inter', sans-serif; /* 与Aggressive Precision保持一致 */
+  font-size: clamp(2.5rem, 4vw, 3.5rem); /* 比Aggressive Precision小一些 */
+  font-weight: 900; /* 加粗 */
+  font-style: italic; /* 斜体 */
+  line-height: 1;
+  letter-spacing: -0.025em; /* 略微紧缩字间距 */
+  color: #25F4EE;
+}
+
+.methodology__phase-number--purple {
+  color: #9B5DE5;
+}
+
+.methodology__phase-number--red {
+  color: #FF2D55;
+}
+
+.methodology__phase-number--white {
+  color: #ffffff;
+}
+
+.methodology__phase-time {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 900; /* 加粗 */
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.methodology__phase-time--cyan {
+  background-color: #25F4EE;
+}
+
+.methodology__phase-time--purple {
+  background-color: #9B5DE5;
+}
+
+.methodology__phase-time--red {
+  background-color: #FF2D55;
+}
+
+.methodology__phase-time--white {
+  background-color: #ffffff;
+}
+
+.methodology__phase-title {
+  font-family: 'Inter', sans-serif; /* 与Aggressive Precision保持一致 */
+  font-size: clamp(1.5rem, 3vw, 3rem); /* 再小一些 */
+  font-weight: 900; /* 加粗 */
+  font-style: italic; /* 斜体 */
+  text-transform: uppercase;
+  line-height: 0.8; /* 紧密行间距 */
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.methodology__phase-desc {
+  color: #e6bcbd;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 700; /* 加粗 */
+}
+
+/* Phase Items */
+.methodology__phase-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  list-style: none;
+}
+
+.methodology__phase-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.methodology__phase-icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.methodology__phase--discovery .methodology__phase-icon {
+  color: #25F4EE;
+}
+
+.methodology__phase--validation .methodology__phase-icon {
+  color: #9B5DE5;
+}
+
+.methodology__phase--scaling .methodology__phase-icon {
+  color: #FF2D55;
+}
+
+.methodology__phase--system .methodology__phase-icon {
+  color: #ffffff;
+}
+
+.methodology__phase-item span {
+  font-family: var(--font-headline); /* 与card-title保持一致 */
+  font-size: 0.75rem;
+  font-weight: 400; /* 与card-title保持一致 */
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Phase Images */
+.methodology__phase-image {
+  position: relative;
+  height: 14rem;
+  width: 100%;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.methodology__phase-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: all 0.7s ease;
+  transform: scale(1);
+}
+
+.methodology__phase:hover .methodology__phase-image img {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+.methodology__image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+  mix-blend-mode: screen;
+}
+
+.methodology__image-overlay--cyan {
+  background-color: #25F4EE;
+}
+
+.methodology__image-overlay--purple {
+  background-color: #9B5DE5;
+}
+
+.methodology__image-overlay--red {
+  background-color: #FF2D55;
+}
+
+.methodology__image-overlay--white {
+  background-color: #ffffff;
+}
+
+.methodology__phase:hover .methodology__image-overlay {
+  opacity: 0;
+}
+
+.methodology__image-gradient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+  z-index: 10;
+}
+
+/* Progress Bars */
+.methodology__progress {
+  height: 0.25rem;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 20;
+}
+
+.methodology__progress::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0;
+  animation: progress-fill 1s ease-out 0.5s both;
+}
+
+.methodology__progress--cyan::after {
+  background-color: #25F4EE;
+  animation-name: progress-fill-25;
+}
+
+.methodology__progress--purple::after {
+  background-color: #9B5DE5;
+  animation-name: progress-fill-50;
+}
+
+.methodology__progress--red::after {
+  background-color: #FF2D55;
+  animation-name: progress-fill-75;
+}
+
+.methodology__progress--white::after {
+  background-color: #ffffff;
+  animation-name: progress-fill-100;
+}
+
+@keyframes progress-fill-25 {
+  from { width: 0; }
+  to { width: 25%; }
+}
+
+@keyframes progress-fill-50 {
+  from { width: 0; }
+  to { width: 50%; }
+}
+
+@keyframes progress-fill-75 {
+  from { width: 0; }
+  to { width: 75%; }
+}
+
+@keyframes progress-fill-100 {
+  from { width: 0; }
+  to { width: 100%; }
+}

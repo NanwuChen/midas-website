@@ -1,0 +1,339 @@
+/* ========================================
+   S4: CASES PREVIEW — 堆叠卡片效果 (Gemini Style)
+   ======================================== */
+
+.cases-preview-section {
+  background-color: #000000; /* 黑色背景 */
+  padding: 3rem clamp(24px, 4vw, 80px) 10rem; /* 减少底部空间 */
+}
+
+.cases-preview-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .cases-preview-container {
+    gap: 6rem;
+  }
+}
+
+/* 卡片基础样式 */
+.case-card {
+  position: sticky;
+  width: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 -15px 30px rgba(0,0,0,0.15),
+    0 15px 30px rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  min-height: 450px;
+  transform-origin: top center;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: transform 0.3s ease, opacity 0.6s ease;
+}
+
+@media (min-width: 768px) {
+  .case-card {
+    flex-direction: row;
+    min-height: 600px;
+  }
+}
+
+/* 堆叠定位 - 下方卡片覆盖上方卡片 */
+.case-card[data-index="0"] {
+  top: 3rem;
+  z-index: 1; /* 最底层 */
+  --index: 0;
+}
+
+.case-card[data-index="1"] {
+  top: 5.5rem;
+  z-index: 2;
+  --index: 1;
+}
+
+.case-card[data-index="2"] {
+  top: 8rem;
+  z-index: 3;
+  --index: 2;
+}
+
+.case-card[data-index="3"] {
+  top: 10.5rem;
+  z-index: 4;
+  --index: 3;
+}
+
+.case-card[data-index="4"] {
+  top: 13rem;
+  z-index: 5; /* 最顶层 */
+  --index: 4;
+}
+
+/* 进入动画由JavaScript处理 */
+
+/* 深度遮罩层 */
+.case-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.1s ease;
+}
+
+/* 内容区域 */
+.case-card__content {
+  width: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .case-card__content {
+    width: 50%;
+    padding: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .case-card__content {
+    padding: 5rem;
+  }
+}
+
+.case-card__text {
+  max-width: 28rem;
+}
+
+/* 标题 */
+.case-card__title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+/* 描述 */
+.case-card__description {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  opacity: 0.9;
+  max-width: 28rem;
+}
+
+/* 按钮 */
+.case-card__button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.case-card__button:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.case-card__arrow {
+  transition: transform 0.3s ease;
+}
+
+.case-card__button:hover .case-card__arrow {
+  transform: translateX(4px);
+}
+
+/* 图片区域 */
+.case-card__image {
+  width: 100%;
+  position: relative;
+  min-height: 450px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .case-card__image {
+    width: 50%;
+    min-height: 600px;
+  }
+}
+
+/* 图片样式 */
+.case-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.case-card__img--cover-bottom {
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.case-card__img--cover-position {
+  object-fit: cover;
+  object-position: 80% center;
+}
+
+.case-card__img--cover-right {
+  object-fit: cover;
+  object-position: right;
+}
+
+.case-card__img--contain-right {
+  object-fit: contain;
+  object-position: right;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .case-card__img--contain-right {
+    padding: 3rem;
+  }
+}
+
+.case-card__img--cover-center {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 渐变遮罩 */
+.case-card__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* 移动端渐变（垂直） */
+@media (max-width: 767px) {
+  .case-card__gradient--ovsov {
+    background: linear-gradient(to bottom, #c2ab92 0%, #c2ab92 15%, #c2ab9299 40%, #c2ab9200 100%);
+  }
+
+  .case-card__gradient--ddg {
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 0%, #ffffff99 15%, #ffffff00 50%);
+  }
+
+  .case-card__gradient--upbe {
+    background: linear-gradient(to bottom, #4a6b58 0%, #4a6b58 0%, #4a6b5899 15%, #4a6b5800 50%);
+  }
+
+  .case-card__gradient--sellerpic {
+    background: linear-gradient(to bottom, #f8f4fa 0%, #f8f4fa 0%, #f8f4fa99 10%, #f8f4fa00 40%);
+  }
+
+  .case-card__gradient--curvesoul {
+    background: linear-gradient(to bottom, #6b6b6b 0%, #6b6b6b 0%, #6b6b6b99 15%, #6b6b6b00 50%);
+  }
+}
+
+/* 桌面端渐变（水平） */
+@media (min-width: 768px) {
+  .case-card__gradient--ovsov {
+    background: linear-gradient(to right, #c2ab92 0%, #c2ab92 15%, #c2ab9299 40%, #c2ab9200 100%);
+  }
+
+  .case-card__gradient--ddg {
+    background: linear-gradient(to right, #ffffff 0%, #ffffff 0%, #ffffff99 15%, #ffffff00 50%);
+  }
+
+  .case-card__gradient--upbe {
+    background: linear-gradient(to right, #4a6b58 0%, #4a6b58 0%, #4a6b5899 15%, #4a6b5800 50%);
+  }
+
+  .case-card__gradient--sellerpic {
+    background: linear-gradient(to right, #f8f4fa 0%, #f8f4fa 0%, #f8f4fa99 10%, #f8f4fa00 40%);
+  }
+
+  .case-card__gradient--curvesoul {
+    background: linear-gradient(to right, #6b6b6b 0%, #6b6b6b 0%, #6b6b6b99 15%, #6b6b6b00 50%);
+  }
+}
+
+/* 主题色彩 */
+.case-card--ovsov {
+  background-color: #c2ab92;
+  color: #ffffff;
+}
+
+.case-card--ddg {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.case-card--upbe {
+  background-color: #4a6b58;
+  color: #ffffff;
+}
+
+.case-card--sellerpic {
+  background-color: #f8f4fa;
+  color: #1a1a1a;
+}
+
+.case-card--curvesoul {
+  background-color: #6b6b6b;
+  color: #ffffff;
+}
+
+/* 按钮主题色 */
+.case-card__button--light {
+  background-color: #ffffff;
+}
+
+.case-card--ovsov .case-card__button--light {
+  color: #c2ab92;
+}
+
+.case-card--upbe .case-card__button--light {
+  color: #4a6b58;
+}
+
+.case-card--curvesoul .case-card__button--light {
+  color: #6b6b6b;
+}
+
+.case-card__button--dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.case-card__button--purple {
+  background-color: #8b7b9e;
+  color: #ffffff;
+}
+
+/* 滚动效果由JavaScript动态处理 */

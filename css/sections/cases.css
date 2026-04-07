@@ -1,0 +1,1464 @@
+/* ========================================
+   CASES PAGE — 1:1 复刻App.tsx设计
+   ======================================== */
+
+/* Fonts from App.tsx */
+.font-inter-900-italic {
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue';
+}
+
+/* Main Container */
+.cases-main {
+  min-height: 100vh;
+  background: var(--color-surface);
+  color: var(--color-text);
+  overflow-x: hidden;
+  padding-top: 80px; /* Account for fixed header */
+}
+
+/* Selection Style */
+.cases-main ::selection {
+  background: var(--color-digital-cyan);
+  color: var(--color-surface);
+}
+
+/* Hero Section */
+.cases-hero {
+  position: relative;
+  padding: 60px 24px 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+  border-bottom: 4px solid var(--color-surface-high);
+}
+
+.cases-hero__container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cases-hero__content {
+  max-width: 1024px;
+}
+
+.cases-hero__badge {
+  background: var(--color-electric-red);
+  color: var(--color-on-red);
+  padding: 4px 16px;
+  display: inline-block;
+  font-family: 'Bebas Neue';
+  font-size: 16px;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.cases-hero__headline {
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 0.9;
+  margin-bottom: 0;
+  font-family: 'Bebas Neue';
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+.cases-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.cases-stat {
+  background: var(--color-surface-low);
+  padding: 16px;
+  border: 2px solid var(--color-surface-high);
+  transition: border-color 0.3s ease;
+}
+
+.cases-stat:hover {
+  border-color: var(--color-digital-cyan);
+}
+
+.cases-stat__label {
+  color: var(--color-digital-cyan);
+  font-family: 'Bebas Neue';
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+
+.cases-stat__value {
+  font-size: 28px;
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/* Main Cases - Stacked Cards Container */
+.cases-stacked-container {
+  background-color: #000000; /* 黑色背景 */
+  padding: 3rem clamp(24px, 4vw, 80px) 6rem; /* 进一步减少底部空间 */
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 极紧凑间距 */
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .cases-stacked-container {
+    gap: 1.2rem; /* 桌面端极紧凑间距 */
+  }
+}
+
+/* Stacked Cards Base Styles */
+.case-card {
+  position: sticky;
+  width: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 -15px 30px rgba(0,0,0,0.15),
+    0 15px 30px rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  min-height: 450px;
+  transform-origin: top center;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: transform 0.3s ease, opacity 0.6s ease;
+}
+
+@media (min-width: 768px) {
+  .case-card {
+    flex-direction: row;
+    min-height: 600px;
+  }
+}
+
+/* 堆叠定位 - 超紧凑的堆叠效果 */
+.case-card[data-index="0"] {
+  top: 0.8rem;
+  z-index: 1;
+  --index: 0;
+}
+
+.case-card[data-index="1"] {
+  top: 1.1rem;
+  z-index: 2;
+  --index: 1;
+}
+
+.case-card[data-index="2"] {
+  top: 1.4rem;
+  z-index: 3;
+  --index: 2;
+}
+
+.case-card[data-index="3"] {
+  top: 1.7rem;
+  z-index: 4;
+  --index: 3;
+}
+
+.case-card[data-index="4"] {
+  top: 2rem;
+  z-index: 5;
+  --index: 4;
+}
+
+.case-card[data-index="5"] {
+  top: 2.3rem;
+  z-index: 6;
+  --index: 5;
+}
+
+.case-card[data-index="6"] {
+  top: 2.6rem;
+  z-index: 7;
+  --index: 6;
+}
+
+.case-card[data-index="7"] {
+  top: 2.9rem;
+  z-index: 8;
+  --index: 7;
+}
+
+/* 深度遮罩层 */
+.case-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.1s ease;
+}
+
+/* 内容区域 */
+.case-card__content {
+  width: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .case-card__content {
+    width: 50%;
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .case-card__content {
+    padding: 4rem;
+  }
+}
+
+.case-card__text {
+  max-width: 32rem;
+}
+
+/* 标题样式 */
+.case-card__title {
+  font-family: 'Bebas Neue';
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* 图片区域 */
+.case-card__image {
+  width: 100%;
+  position: relative;
+  min-height: 600px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .case-card__image {
+    width: 50%;
+    min-height: 700px;
+  }
+}
+
+/* 图片样式 */
+.case-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.case-card__img--cover-bottom {
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.case-card__img--cover-position {
+  object-fit: cover;
+  object-position: 80% center;
+}
+
+.case-card__img--cover-right {
+  object-fit: cover;
+  object-position: right;
+}
+
+.case-card__img--contain-right {
+  object-fit: contain;
+  object-position: right;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .case-card__img--contain-right {
+    padding: 3rem;
+  }
+}
+
+.case-card__img--cover-center {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 渐变遮罩 */
+.case-card__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Phone Frame */
+.phone-frame {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 350px;
+  background: #000000;
+  border: 4px solid var(--color-surface-high);
+  flex-shrink: 0;
+  z-index: 30;
+  box-shadow: 12px 12px 0px 0px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 768px) {
+  .phone-frame {
+    right: 3rem;
+    width: 220px;
+    height: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .phone-frame {
+    right: 4rem;
+    width: 240px;
+    height: 420px;
+  }
+}
+
+.phone-frame__corner-tl {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 24px;
+  height: 24px;
+  border-top: 4px solid;
+  border-left: 4px solid;
+}
+
+.phone-frame__corner-br {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+}
+
+.phone-frame__screen {
+  width: 100%;
+  height: 100%;
+  background: #0E0E0E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.phone-frame__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.phone-frame__placeholder {
+  text-align: center;
+  padding: 40px;
+}
+
+.phone-frame__spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px dashed rgba(255, 255, 255, 0.2);
+  margin: 0 auto 24px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.phone-frame__text {
+  font-family: 'Bebas Neue';
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+.phone-frame__subtext {
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: monospace;
+}
+
+.phone-frame__overlay {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.phone-frame__ui-element {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  padding: 4px 12px;
+  font-size: 11px;
+  font-family: monospace;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Case Header */
+.case-header {
+  margin-bottom: 24px;
+}
+
+.case-header__label {
+  font-size: 10px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  margin-bottom: 2px;
+}
+
+.case-header__value {
+  font-size: clamp(28px, 4vw, 48px);
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.case-header__name {
+  font-size: 20px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+}
+
+/* Case Summary */
+.case-summary {
+  margin-bottom: 24px;
+  border-left: 4px solid;
+  padding-left: 16px;
+}
+
+.case-summary__label {
+  font-size: 11px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.case-summary__text {
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Case Timeline */
+.case-timeline {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.case-timeline__line {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+.case-timeline__item {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 20px;
+}
+
+.case-timeline__marker {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+}
+
+.case-timeline__month {
+  font-family: 'Bebas Neue';
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.case-timeline__value {
+  font-size: 24px;
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.case-timeline__desc {
+  opacity: 0.7;
+  font-size: 12px;
+}
+
+/* Case Chart */
+.case-chart {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 4px solid;
+}
+
+.case-chart__label {
+  font-size: 11px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.case-chart__bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 80px;
+}
+
+.case-chart__bar {
+  width: 100%;
+  flex: 1;
+}
+
+.case-chart__bar--active {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Case Strategy */
+.case-strategy {
+  margin-bottom: 24px;
+}
+
+.case-strategy__label {
+  font-size: 11px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.case-strategy__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.case-strategy__item {
+  padding: 12px;
+  border-left: 3px solid;
+}
+
+.case-strategy__title {
+  font-family: 'Bebas Neue';
+  font-size: 14px;
+}
+
+.case-strategy__desc {
+  font-size: 10px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.case-strategy__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.case-strategy__numbered {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 16px;
+  border-left: 6px solid;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.case-strategy__number {
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+.case-strategy__content {
+  flex: 1;
+}
+
+.case-strategy__simple {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.case-strategy__simple-item {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-right: 8px solid;
+}
+
+.case-strategy__simple-number {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.case-strategy__simple-text {
+  font-size: 18px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.case-strategy__blocks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.case-strategy__block {
+  padding: 24px;
+  border-bottom: 4px solid;
+}
+
+.case-strategy__block-title {
+  font-family: 'Bebas Neue';
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.case-strategy__block-desc {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Case Testing (DDG specific) */
+.case-testing {
+  margin-bottom: 48px;
+}
+
+.case-testing__label {
+  font-size: 14px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.case-testing__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.case-testing__metric {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 24px;
+  border-left: 8px solid;
+}
+
+.case-testing__number {
+  font-size: 48px;
+  font-family: 'Inter';
+  font-weight: 900;
+  font-style: italic;
+}
+
+.case-testing__desc {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.case-testing__process {
+  background: white;
+  padding: 32px;
+  border: 4px solid;
+}
+
+.case-testing__result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-testing__result--success .case-testing__status {
+  color: #00ACC1;
+  font-family: 'Bebas Neue';
+}
+
+.case-testing__result--success .case-testing__action {
+  background: #00ACC1;
+  color: white;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.case-testing__result--fail .case-testing__status {
+  color: #E53935;
+  font-family: 'Bebas Neue';
+  text-decoration: line-through;
+}
+
+.case-testing__result--fail .case-testing__action {
+  background: #E53935;
+  color: white;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.case-testing__divider {
+  height: 4px;
+  background: #F5F5F5;
+  margin: 16px 0;
+}
+
+.case-testing__cycle {
+  padding-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Case Pyramid */
+.case-pyramid {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 4px solid;
+}
+
+.case-pyramid__label {
+  font-size: 14px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.case-pyramid__structure {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.case-pyramid__level {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #4A148C;
+}
+
+.case-pyramid__level--top {
+  background: rgba(155, 93, 229, 0.3);
+  width: 25%;
+  margin: 0 auto;
+}
+
+.case-pyramid__level--mid {
+  background: rgba(155, 93, 229, 0.2);
+  width: 50%;
+  margin: 0 auto;
+}
+
+.case-pyramid__level--base {
+  background: rgba(155, 93, 229, 0.1);
+  width: 100%;
+}
+
+/* Case Efficiency (GYROOR specific) */
+.case-efficiency {
+  margin-top: 48px;
+}
+
+.case-efficiency__bars {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.case-efficiency__bar {
+  height: 48px;
+  flex: 1;
+  background: #001D3D;
+}
+
+.case-efficiency__bar--active {
+  background: #00B4D8;
+}
+
+.case-efficiency__label {
+  text-align: right;
+  font-size: 10px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+}
+
+/* Case Badge Inline */
+.case-badge-inline {
+  display: inline-block;
+  padding: 4px 12px;
+  font-family: 'Bebas Neue';
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Stacked Cards Color Themes */
+
+/* CurveSoul - Grey */
+.case-card--curvesoul {
+  background-color: #6b6b6b;
+  color: #ffffff;
+}
+
+.case-card--curvesoul .case-badge-inline {
+  background: #ffffff;
+  color: #6b6b6b;
+}
+
+.case-card--curvesoul .phone-frame__corner-tl,
+.case-card--curvesoul .phone-frame__corner-br {
+  border-color: #ffffff;
+}
+
+.case-card--curvesoul .case-header__label {
+  color: rgba(255,255,255,0.8);
+}
+
+.case-card--curvesoul .case-header__value {
+  color: #ffffff;
+}
+
+.case-card--curvesoul .case-timeline__line {
+  background: rgba(255,255,255,0.3);
+}
+
+.case-card--curvesoul .case-timeline__marker {
+  background: #ffffff;
+}
+
+.case-card--curvesoul .case-timeline__month {
+  color: #ffffff;
+}
+
+.case-card--curvesoul .case-timeline__desc {
+  color: rgba(255,255,255,0.7);
+}
+
+.case-card--curvesoul .case-chart {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.case-card--curvesoul .case-chart__label {
+  color: rgba(255,255,255,0.8);
+}
+
+.case-card--curvesoul .case-chart__bars .case-chart__bar:nth-child(1) {
+  background: #F8BBD0;
+}
+
+.case-card--curvesoul .case-chart__bars .case-chart__bar:nth-child(2) {
+  background: #F48FB1;
+}
+
+.case-card--curvesoul .case-chart__bars .case-chart__bar:nth-child(3) {
+  background: #FF4081;
+}
+
+.case-card--curvesoul .case-chart__bars .case-chart__bar:nth-child(4) {
+  background: #C2185B;
+}
+
+/* SellerPic - Purple/White */
+.case-card--sellerpic {
+  background-color: #f8f4fa;
+  color: #4A148C;
+}
+
+.case-card--sellerpic .case-badge-inline {
+  background: #9B5DE5;
+  color: white;
+}
+
+.case-card--sellerpic .phone-frame__corner-tl,
+.case-card--sellerpic .phone-frame__corner-br {
+  border-color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-header__label {
+  color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-header__value {
+  color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-summary {
+  border-color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-summary__label {
+  color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-summary__text {
+  color: #6A1B9A;
+}
+
+.case-card--sellerpic .case-strategy__label {
+  color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-strategy__item {
+  background: rgba(155, 93, 229, 0.1);
+  border-color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-strategy__title {
+  color: #9B5DE5;
+}
+
+.case-card--sellerpic .case-strategy__desc {
+  color: #6A1B9A;
+}
+
+.case-card--sellerpic .case-pyramid {
+  border-color: #E1BEE7;
+}
+
+.case-card--sellerpic .case-pyramid__label {
+  color: #9B5DE5;
+}
+
+/* Upbe - Green */
+.case-card--upbe {
+  background-color: #4a6b58;
+  color: #ffffff;
+}
+
+.case-card--upbe .case-badge-inline {
+  background: #00C853;
+  color: white;
+}
+
+.case-card--upbe .phone-frame__corner-tl,
+.case-card--upbe .phone-frame__corner-br {
+  border-color: #00C853;
+}
+
+.case-card--upbe .case-header__label {
+  color: rgba(255,255,255,0.8);
+}
+
+.case-card--upbe .case-header__value {
+  color: #ffffff;
+}
+
+.case-card--upbe .case-summary {
+  border-color: #00C853;
+}
+
+.case-card--upbe .case-summary__label {
+  color: #00C853;
+}
+
+.case-card--upbe .case-summary__text {
+  color: rgba(255,255,255,0.9);
+}
+
+.case-card--upbe .case-strategy__label {
+  color: #00C853;
+}
+
+.case-card--upbe .case-strategy__numbered {
+  background: rgba(0, 200, 83, 0.1);
+  border-color: #00C853;
+}
+
+.case-card--upbe .case-strategy__number {
+  color: #00C853;
+}
+
+.case-card--upbe .case-strategy__title {
+  color: #ffffff;
+}
+
+.case-card--upbe .case-strategy__desc {
+  color: rgba(255,255,255,0.8);
+}
+
+/* DDG - Cream/Off-white */
+.case-card--ddg {
+  background-color: #ffffff;
+  color: #5D4037;
+}
+
+.case-card--ddg .case-badge-inline {
+  background: #8D6E63;
+  color: white;
+}
+
+.case-card--ddg .phone-frame__corner-tl,
+.case-card--ddg .phone-frame__corner-br {
+  border-color: #8D6E63;
+}
+
+.case-card--ddg .case-header__label {
+  color: #8D6E63;
+}
+
+.case-card--ddg .case-header__value {
+  color: #8D6E63;
+}
+
+.case-card--ddg .case-testing__label {
+  color: #8D6E63;
+}
+
+.case-card--ddg .case-testing__metric {
+  background: rgba(141, 110, 99, 0.1);
+  border-color: #A1887F;
+}
+
+.case-card--ddg .case-testing__desc {
+  color: #8D6E63;
+}
+
+.case-card--ddg .case-testing__process {
+  background: rgba(215, 204, 200, 0.3);
+  border-color: #D7CCC8;
+}
+
+.case-card--ddg .case-testing__cycle {
+  color: #8D6E63;
+}
+
+/* BIOHYALUX - Light Blue */
+.case-card--biohyalux {
+  background-color: #E1F5FE;
+  color: #01579B;
+}
+
+.case-card--biohyalux .case-badge-inline {
+  background: #03A9F4;
+  color: white;
+}
+
+.case-card--biohyalux .phone-frame__corner-tl,
+.case-card--biohyalux .phone-frame__corner-br {
+  border-color: #03A9F4;
+}
+
+.case-card--biohyalux .case-header__label {
+  color: #03A9F4;
+}
+
+.case-card--biohyalux .case-header__value {
+  color: #03A9F4;
+}
+
+.case-card--biohyalux .case-summary {
+  border-color: #0288D1;
+}
+
+.case-card--biohyalux .case-summary__label {
+  color: #0288D1;
+}
+
+.case-card--biohyalux .case-strategy__label {
+  color: #0288D1;
+}
+
+.case-card--biohyalux .case-strategy__simple-item {
+  background: rgba(3, 169, 244, 0.1);
+  border-color: #03A9F4;
+}
+
+.case-card--biohyalux .case-strategy__simple-number {
+  background: #03A9F4;
+  color: white;
+}
+
+/* GYROOR - Tech Blue */
+.case-card--gyroor {
+  background-color: #001233;
+  color: #00B4D8;
+}
+
+.case-card--gyroor .case-badge-inline {
+  background: #00B4D8;
+  color: #001233;
+}
+
+.case-card--gyroor .phone-frame__corner-tl,
+.case-card--gyroor .phone-frame__corner-br {
+  border-color: #00B4D8;
+}
+
+.case-card--gyroor .case-header__label {
+  color: rgba(0, 180, 216, 0.8);
+}
+
+.case-card--gyroor .case-header__value {
+  color: #00B4D8;
+}
+
+.case-card--gyroor .case-summary {
+  border-color: #00B4D8;
+}
+
+.case-card--gyroor .case-summary__label {
+  color: #00B4D8;
+}
+
+.case-card--gyroor .case-summary__text {
+  color: #CAF0F8;
+}
+
+.case-card--gyroor .case-strategy__label {
+  color: #00B4D8;
+}
+
+.case-card--gyroor .case-strategy__block {
+  background: rgba(0, 180, 216, 0.1);
+  border-color: #00B4D8;
+}
+
+.case-card--gyroor .case-strategy__block-title {
+  color: #00B4D8;
+}
+
+.case-card--gyroor .case-strategy__block-desc {
+  color: #CAF0F8;
+}
+
+.case-card--gyroor .case-efficiency__label {
+  color: #00B4D8;
+}
+
+/* WPS - Black/White */
+.case-card--wps {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.case-card--wps .case-badge-inline {
+  background: #ffffff;
+  color: #000000;
+}
+
+.case-card--wps .phone-frame__corner-tl,
+.case-card--wps .phone-frame__corner-br {
+  border-color: #ffffff;
+}
+
+.case-card--wps .case-header__label {
+  color: rgba(255,255,255,0.8);
+}
+
+.case-card--wps .case-header__value {
+  color: #ffffff;
+}
+
+.case-card--wps .case-summary {
+  border-color: #ffffff;
+}
+
+.case-card--wps .case-summary__label {
+  color: #ffffff;
+}
+
+.case-card--wps .case-summary__text {
+  color: rgba(255,255,255,0.9);
+}
+
+/* OVSOV - Brown/Cream */
+.case-card--ovsov {
+  background-color: #c2ab92;
+  color: #ffffff;
+}
+
+.case-card--ovsov .case-badge-inline {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+}
+
+.case-card--ovsov .phone-frame__corner-tl,
+.case-card--ovsov .phone-frame__corner-br {
+  border-color: #6D4C41;
+}
+
+.case-card--ovsov .case-header__label {
+  color: rgba(255,255,255,0.8);
+}
+
+.case-card--ovsov .case-header__value {
+  color: #ffffff;
+}
+
+.case-card--ovsov .case-summary {
+  border-color: rgba(255,255,255,0.5);
+}
+
+.case-card--ovsov .case-summary__label {
+  color: #ffffff;
+}
+
+.case-card--ovsov .case-summary__text {
+  color: rgba(255,255,255,0.9);
+}
+
+/* 渐变遮罩效果 */
+/* 移动端渐变（垂直） */
+@media (max-width: 767px) {
+  .case-card__gradient--curvesoul {
+    background: linear-gradient(to bottom, #6b6b6b 0%, #6b6b6b 15%, #6b6b6b99 40%, #6b6b6b00 100%);
+  }
+
+  .case-card__gradient--sellerpic {
+    background: linear-gradient(to bottom, #f8f4fa 0%, #f8f4fa 0%, #f8f4fa99 15%, #f8f4fa00 50%);
+  }
+
+  .case-card__gradient--upbe {
+    background: linear-gradient(to bottom, #4a6b58 0%, #4a6b58 0%, #4a6b5899 15%, #4a6b5800 50%);
+  }
+
+  .case-card__gradient--ddg {
+    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 0%, #ffffff99 15%, #ffffff00 50%);
+  }
+
+  .case-card__gradient--biohyalux {
+    background: linear-gradient(to bottom, #E1F5FE 0%, #E1F5FE 0%, #E1F5FE99 15%, #E1F5FE00 50%);
+  }
+
+  .case-card__gradient--gyroor {
+    background: linear-gradient(to bottom, #001233 0%, #001233 0%, #00123399 15%, #00123300 50%);
+  }
+
+  .case-card__gradient--wps {
+    background: linear-gradient(to bottom, #000000 0%, #000000 0%, #00000099 15%, #00000000 50%);
+  }
+
+  .case-card__gradient--ovsov {
+    background: linear-gradient(to bottom, #c2ab92 0%, #c2ab92 15%, #c2ab9299 40%, #c2ab9200 100%);
+  }
+}
+
+/* 桌面端渐变（水平） */
+@media (min-width: 768px) {
+  .case-card__gradient--curvesoul {
+    background: linear-gradient(to right, #6b6b6b 0%, #6b6b6b 15%, #6b6b6b99 40%, #6b6b6b00 100%);
+  }
+
+  .case-card__gradient--sellerpic {
+    background: linear-gradient(to right, #f8f4fa 0%, #f8f4fa 0%, #f8f4fa99 15%, #f8f4fa00 50%);
+  }
+
+  .case-card__gradient--upbe {
+    background: linear-gradient(to right, #4a6b58 0%, #4a6b58 0%, #4a6b5899 15%, #4a6b5800 50%);
+  }
+
+  .case-card__gradient--ddg {
+    background: linear-gradient(to right, #ffffff 0%, #ffffff 0%, #ffffff99 15%, #ffffff00 50%);
+  }
+
+  .case-card__gradient--biohyalux {
+    background: linear-gradient(to right, #E1F5FE 0%, #E1F5FE 0%, #E1F5FE99 15%, #E1F5FE00 50%);
+  }
+
+  .case-card__gradient--gyroor {
+    background: linear-gradient(to right, #001233 0%, #001233 0%, #00123399 15%, #00123300 50%);
+  }
+
+  .case-card__gradient--wps {
+    background: linear-gradient(to right, #000000 0%, #000000 0%, #00000099 15%, #00000000 50%);
+  }
+
+  .case-card__gradient--ovsov {
+    background: linear-gradient(to right, #c2ab92 0%, #c2ab92 15%, #c2ab9299 40%, #c2ab9200 100%);
+  }
+}
+
+/* Remove old secondary cases styles - now integrated into stacked cards */
+
+/* Cases CTA */
+.cases-cta {
+  background: var(--color-electric-red);
+  color: var(--color-on-red);
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.cases-cta__content {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.cases-cta__headline {
+  font-size: clamp(36px, 5vw, 64px);
+  margin-bottom: 32px;
+  line-height: 1;
+}
+
+.cases-cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-surface);
+  color: var(--color-electric-red);
+  padding: 16px 32px;
+  font-size: 20px;
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cases-cta__button:hover {
+  background: var(--color-digital-cyan);
+  color: var(--color-surface);
+  text-decoration: none;
+}
+
+.cases-cta__arrow {
+  font-size: 32px;
+  transition: transform 0.3s ease;
+}
+
+.cases-cta__button:hover .cases-cta__arrow {
+  transform: translateX(8px);
+}
+
+/* Decorative Background */
+.cases-bg-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.05;
+  background-image: radial-gradient(#e5e2e1 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .cases-hero__container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .cases-hero__stats {
+    width: auto;
+  }
+
+  .case-strategy__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .cases-hero {
+    padding: 40px 20px 32px;
+  }
+
+  .case-strategy__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-frame {
+    right: 1rem;
+    width: 160px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cases-hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .case-header__value {
+    font-size: clamp(20px, 4vw, 32px);
+  }
+
+  .case-timeline__value {
+    font-size: 20px;
+  }
+
+  .phone-frame {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 2rem auto;
+    width: 140px;
+    height: 240px;
+  }
+
+  .case-card__image {
+    min-height: 400px;
+  }
+}

@@ -1,0 +1,371 @@
+/* ========================================
+   S6: WHY US — Gemini HeroSplit Exact Copy
+   ======================================== */
+
+/* Main container - flex flex-col md:flex-row pt-24 border-b border-[#353534] */
+.gemini-hero-split {
+  display: flex;
+  flex-direction: column;
+  padding-top: 6rem; /* pt-24 */
+  border-bottom: 1px solid #353534;
+}
+
+@media (min-width: 768px) {
+  .gemini-hero-split {
+    flex-direction: row; /* md:flex-row */
+  }
+}
+
+/* Left side - w-full md:w-1/2 bg-[#131313] border-r border-[#353534] flex flex-col group */
+.gemini-left {
+  width: 100%; /* w-full */
+  background-color: #131313; /* bg-[#131313] */
+  border-right: 1px solid #353534; /* border-r border-[#353534] */
+  display: flex;
+  flex-direction: column; /* flex flex-col */
+}
+
+@media (min-width: 768px) {
+  .gemini-left {
+    width: 50%; /* md:w-1/2 */
+  }
+}
+
+/* Right side - w-full md:w-1/2 bg-[#FF2D55] flex flex-col group */
+.gemini-right {
+  width: 100%; /* w-full */
+  background-color: #FF2D55; /* bg-[#FF2D55] */
+  display: flex;
+  flex-direction: column; /* flex flex-col */
+}
+
+@media (min-width: 768px) {
+  .gemini-right {
+    width: 50%; /* md:w-1/2 */
+  }
+}
+
+/* Image area - h-64 md:h-80 relative overflow-hidden border-b border-[#353534] */
+.gemini-image-area {
+  height: 16rem; /* h-64 */
+  position: relative; /* relative */
+  overflow: hidden; /* overflow-hidden */
+  border-bottom: 1px solid #353534; /* border-b border-[#353534] */
+}
+
+@media (min-width: 768px) {
+  .gemini-image-area {
+    height: 20rem; /* md:h-80 */
+  }
+}
+
+.gemini-image-area img {
+  width: 100%; /* w-full */
+  height: 100%; /* h-full */
+  object-fit: cover; /* object-cover */
+  filter: grayscale(1); /* grayscale */
+  transition: all 0.7s ease; /* transition-all duration-700 */
+  transform: scale(1); /* transform */
+}
+
+.gemini-left:hover .gemini-image-area img,
+.gemini-right:hover .gemini-image-area img {
+  filter: grayscale(0); /* group-hover:grayscale-0 */
+  transform: scale(1.05); /* group-hover:scale-105 */
+}
+
+/* Overlay - absolute inset-0 bg-[#FF2D55] mix-blend-overlay opacity-40 group-hover:opacity-0 transition-opacity duration-500 z-10 */
+.gemini-overlay {
+  position: absolute; /* absolute */
+  top: 0; right: 0; bottom: 0; left: 0; /* inset-0 */
+  background-color: #FF2D55; /* bg-[#FF2D55] */
+  mix-blend-mode: overlay; /* mix-blend-overlay */
+  opacity: 0.4; /* opacity-40 */
+  transition: opacity 0.5s ease; /* transition-opacity duration-500 */
+  z-index: 10; /* z-10 */
+}
+
+.gemini-overlay-right {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: #40000C; /* bg-[#40000C] */
+  mix-blend-mode: overlay;
+  opacity: 0.4;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+}
+
+.gemini-left:hover .gemini-overlay,
+.gemini-right:hover .gemini-overlay-right {
+  opacity: 0; /* group-hover:opacity-0 */
+}
+
+/* Gradient - absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-transparent z-10 opacity-80 */
+.gemini-gradient-left {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(to top, #131313, transparent, transparent); /* bg-gradient-to-t from-[#131313] via-transparent to-transparent */
+  z-index: 10;
+  opacity: 0.8; /* opacity-80 */
+}
+
+.gemini-gradient-right {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(to top, #FF2D55, transparent, transparent);
+  z-index: 10;
+  opacity: 0.8;
+}
+
+/* Badge - absolute top-8 left-8 md:top-12 md:left-12 z-20 */
+.gemini-badge {
+  position: absolute; /* absolute */
+  top: 2rem; left: 2rem; /* top-8 left-8 */
+  z-index: 20; /* z-20 */
+}
+
+@media (min-width: 768px) {
+  .gemini-badge {
+    top: 3rem; left: 3rem; /* md:top-12 md:left-12 */
+  }
+}
+
+.gemini-badge span {
+  background-color: #353534; /* bg-[#353534] */
+  color: #e5e2e1; /* text-[#e5e2e1] */
+  padding: 0.25rem 1rem; /* px-4 py-1 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 700; /* font-bold */
+  letter-spacing: 0.2em; /* tracking-[0.2em] */
+  text-transform: uppercase; /* uppercase */
+}
+
+.gemini-badge-dark {
+  position: absolute;
+  top: 2rem; left: 2rem;
+  z-index: 20;
+}
+
+@media (min-width: 768px) {
+  .gemini-badge-dark {
+    top: 3rem; left: 3rem;
+  }
+}
+
+.gemini-badge-dark span {
+  background-color: #000000; /* bg-black */
+  color: #ffffff; /* text-white */
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Content area - unified padding to match other sections */
+.gemini-content-area {
+  padding: clamp(24px, 4vw, 80px);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gemini-content-inner {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title - 使用pain-points-title样式 */
+.gemini-title-left {
+  font-family: 'Inter', sans-serif; /* Inter字体 */
+  font-size: clamp(3rem, 6vw, 6rem); /* 响应式：稍微小一些 */
+  font-weight: 900; /* 最粗字重 */
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em; /* 略微紧缩字间距 */
+  color: white; /* 白色 */
+  text-transform: uppercase; /* 全大写 */
+  margin-bottom: 3rem; /* 下边距 */
+}
+
+.gemini-title-faded {
+  color: #FF2D55; /* 红色强调 */
+}
+
+.gemini-title-right {
+  font-family: 'Inter', sans-serif; /* Inter字体 */
+  font-size: clamp(3rem, 6vw, 6rem); /* 响应式：稍微小一些 */
+  font-weight: 900; /* 最粗字重 */
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em; /* 略微紧缩字间距 */
+  color: #40000C; /* text-[#40000C] */
+  text-transform: uppercase; /* 全大写 */
+  margin-bottom: 3rem; /* 下边距 */
+}
+
+.gemini-title-white {
+  color: #ffffff; /* text-white */
+}
+
+/* Points container - space-y-8 flex-grow */
+.gemini-points {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 减小间距，更紧密 */
+  flex-grow: 1; /* flex-grow */
+}
+
+/* Point - flex items-start gap-6 */
+.gemini-point {
+  display: flex; /* flex */
+  align-items: flex-start; /* items-start */
+  gap: 1.5rem; /* gap-6 */
+}
+
+/* X icon - text-[#FF2D55] w-8 h-8 flex-shrink-0 mt-1 */
+.gemini-x-icon {
+  color: #FF2D55; /* text-[#FF2D55] */
+  width: 2rem; height: 2rem; /* w-8 h-8 */
+  flex-shrink: 0; /* flex-shrink-0 */
+  margin-top: 0.25rem; /* mt-1 */
+  font-weight: 900;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Check icon - bg-black p-1 flex-shrink-0 mt-1 */
+.gemini-check-icon {
+  background-color: #000000; /* bg-black */
+  padding: 0.25rem; /* p-1 */
+  flex-shrink: 0; /* flex-shrink-0 */
+  margin-top: 0.25rem; /* mt-1 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gemini-check-icon span {
+  color: #FF2D55; /* text-[#FF2D55] */
+  width: 1.5rem; height: 1.5rem; /* w-6 h-6 */
+  font-weight: 900;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Point title - text-2xl font-black text-[#e5e2e1] tracking-tight uppercase */
+.gemini-point-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 900; /* font-black */
+  color: #e5e2e1; /* text-[#e5e2e1] */
+  letter-spacing: -0.025em; /* tracking-tight */
+  text-transform: uppercase; /* uppercase */
+}
+
+.gemini-point-title-right {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #000000; /* text-black */
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+/* Card title small style for point titles */
+.card-title-small {
+  font-family: "Bebas Neue", "Archivo Black", sans-serif; /* 字体 */
+  font-size: clamp(1.5rem, 3vw, 1.875rem); /* 24px~30px 响应式 */
+  font-weight: 400; /* 正常字重 */
+  color: white; /* 白色 */
+  line-height: 0.9; /* 更紧密行高 */
+  text-transform: uppercase; /* 全大写 */
+  margin-bottom: 16px; /* 减小下边距 */
+}
+
+.card-title-small--right {
+  color: #000000; /* 右侧为黑色 */
+  line-height: 0.9; /* 保持同样的行高 */
+  margin-bottom: 16px; /* 保持同样的下边距 */
+}
+
+/* Card text style for point descriptions */
+.card-text {
+  font-family: 'Epilogue', sans-serif; /* 字体（继承自body） */
+  font-size: 1.125rem; /* 18px */
+  padding-left: 16px; /* 左内边距 */
+  max-width: 512px; /* 最大宽度 */
+  line-height: 1.4; /* 更紧密行高 */
+  color: #e6bcbd; /* 左侧颜色 */
+  font-weight: 500; /* font-medium */
+}
+
+.card-text--right {
+  color: #40000C; /* 右侧颜色 */
+  font-weight: 700; /* font-bold */
+  padding-left: 0; /* 右侧不需要左边距 */
+  line-height: 1.4; /* 更紧密行高 */
+}
+
+/* Point description - text-[#e6bcbd] text-sm mt-2 max-w-sm font-medium */
+.gemini-point-desc {
+  color: #e6bcbd; /* text-[#e6bcbd] */
+  font-size: 0.875rem; /* text-sm */
+  margin-top: 0.5rem; /* mt-2 */
+  max-width: 24rem; /* max-w-sm */
+  font-weight: 500; /* font-medium */
+}
+
+.gemini-point-desc-right {
+  color: #40000C; /* text-[#40000C] */
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  max-width: 24rem;
+  font-weight: 700; /* font-bold */
+}
+
+/* Quote - mt-16 bg-[#1C1B1B] p-8 border-l-4 border-[#FF2D55] */
+.gemini-quote {
+  margin-top: 3rem; /* 减小上边距 */
+  background-color: #1C1B1B; /* bg-[#1C1B1B] */
+  padding: 2rem; /* p-8 */
+  border-left: 4px solid #FF2D55; /* border-l-4 border-[#FF2D55] */
+}
+
+.gemini-quote p {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  font-style: italic; /* italic */
+  color: #ffffff; /* text-white */
+  line-height: 1.1; /* 更紧密行高 */
+  text-transform: uppercase; /* uppercase */
+}
+
+/* CTA - mt-16 bg-[#40000C] p-8 */
+.gemini-cta-section {
+  margin-top: 4rem; /* mt-16 */
+  background-color: #40000C; /* bg-[#40000C] */
+  padding: 2rem; /* p-8 */
+}
+
+.gemini-cta-button {
+  width: 100%; /* w-full */
+  background-color: #ffffff; /* bg-white */
+  color: #000000; /* text-black */
+  font-weight: 900; /* font-black */
+  padding: 1.25rem; /* py-5 */
+  font-size: 1.25rem; /* text-xl */
+  letter-spacing: -0.025em; /* tracking-tighter */
+  text-transform: uppercase; /* uppercase */
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease; /* transition-none */
+}
+
+.gemini-cta-button:hover {
+  background-color: #000000; /* hover:bg-black */
+  color: #ffffff; /* hover:text-white */
+}

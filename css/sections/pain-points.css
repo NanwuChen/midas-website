@@ -1,0 +1,582 @@
+/* ========================================
+   GEMINI-STYLE PAIN POINTS SECTION
+   ======================================== */
+
+/* Root Variables for Gemini Design */
+:root {
+  --gemini-surface-lowest: #0e0e0e;
+  --gemini-surface-low: #1c1b1b;
+  --gemini-surface: #131313;
+  --gemini-surface-high: #2a2a2a;
+  --gemini-surface-highest: #353534;
+  --gemini-primary: #FF2D55;
+  --gemini-secondary: #25F4EE;
+  --gemini-on-surface: #e5e2e1;
+  --gemini-on-surface-variant: #e6bcbd;
+  --font-headline: "Bebas Neue", "Archivo Black", sans-serif;
+}
+
+/* Material Icons Setup */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Main Section */
+.pain-points-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #08080F;
+  background-image:
+    linear-gradient(to right, rgba(255, 45, 85, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 45, 85, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Header Section */
+.pain-points-header {
+  padding: 64px clamp(24px, 4vw, 80px) 48px;
+  border-bottom: 8px solid var(--gemini-primary);
+}
+
+@media (min-width: 768px) {
+  .pain-points-header {
+    padding: 64px clamp(24px, 4vw, 80px) 48px;
+  }
+}
+
+.pain-points-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.pain-points-label {
+  background-color: var(--gemini-secondary);
+  color: black;
+  font-family: var(--font-headline);
+  padding: 4px 12px;
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+  display: inline-block;
+}
+
+.pain-points-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(3rem, 6vw, 8rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 0.8;
+  letter-spacing: -0.025em;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.title-accent {
+  color: var(--gemini-primary);
+}
+
+
+/* Pain Points Content */
+.pain-points-content {
+  padding: 24px clamp(24px, 4vw, 80px);
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 4px solid var(--gemini-primary);
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* Grid Item Placements */
+.card-1 {
+  grid-column: span 1;
+  border-bottom: 4px solid var(--gemini-primary);
+}
+
+.card-2 {
+  grid-column: span 1;
+  border-bottom: 4px solid var(--gemini-primary);
+}
+
+.card-3 {
+  grid-column: span 1;
+  border-bottom: 4px solid var(--gemini-primary);
+}
+
+.card-4 {
+  grid-column: span 1;
+  border-bottom: 4px solid var(--gemini-primary);
+}
+
+.card-5 {
+  grid-column: span 1;
+}
+
+@media (min-width: 768px) {
+  .card-1 {
+    grid-column: span 6;
+    border-right: 4px solid var(--gemini-primary);
+  }
+
+  .card-2 {
+    grid-column: span 6;
+    border-bottom: 4px solid var(--gemini-primary);
+  }
+
+  .card-3 {
+    grid-column: span 3;
+    border-right: 4px solid var(--gemini-primary);
+    border-bottom: 0;
+  }
+
+  .card-4 {
+    grid-column: span 3;
+    border-right: 4px solid var(--gemini-primary);
+    border-bottom: 0;
+  }
+
+  .card-5 {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-1 {
+    grid-column: span 8;
+  }
+
+  .card-2 {
+    grid-column: span 4;
+  }
+
+  .card-3 {
+    grid-column: span 4;
+  }
+
+  .card-4 {
+    grid-column: span 4;
+  }
+
+  .card-5 {
+    grid-column: span 4;
+  }
+}
+
+/* Individual Cards */
+.bento-card {
+  padding: 32px;
+  transition: background-color 50ms steps(1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.card-1 {
+  background-color: var(--gemini-surface-lowest);
+}
+
+.card-1:hover {
+  background-color: var(--gemini-surface-high);
+}
+
+.card-2 {
+  background-color: var(--gemini-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-2:hover {
+  background-color: var(--gemini-surface-high);
+}
+
+.card-3 {
+  background-color: var(--gemini-surface-low);
+}
+
+.card-3:hover {
+  background-color: var(--gemini-primary);
+}
+
+.card-4 {
+  background-color: #08080F;
+}
+
+.card-4:hover {
+  background-color: var(--gemini-surface-high);
+}
+
+.card-5 {
+  background-color: var(--gemini-surface-highest);
+}
+
+.card-5:hover {
+  background-color: var(--gemini-secondary);
+}
+
+/* Card Headers */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.card-icon {
+  font-size: 3rem;
+  color: var(--gemini-primary);
+}
+
+.card-number {
+  font-family: var(--font-headline);
+  font-size: 2.5rem;
+  color: var(--gemini-surface-highest);
+  line-height: 1;
+}
+
+.card-3:hover .card-number,
+.card-5:hover .card-number {
+  color: black;
+}
+
+/* Card Titles */
+.card-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-weight: 400;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.card-title-small {
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  margin-bottom: 24px;
+}
+
+.card-3:hover .card-title,
+.card-5:hover .card-title {
+  color: black;
+}
+
+.title-red {
+  color: var(--gemini-primary);
+}
+
+.title-cyan {
+  color: var(--gemini-secondary);
+}
+
+.title-red-alt {
+  color: var(--gemini-primary);
+}
+
+.card-3:hover .title-cyan {
+  color: white;
+}
+
+.card-5:hover .title-red-alt {
+  color: black;
+}
+
+/* Card Content */
+.card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-subtitle {
+  font-family: var(--font-headline);
+  color: var(--gemini-secondary);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.card-text {
+  color: var(--gemini-on-surface-variant);
+  font-size: 1.125rem;
+  border-left: 2px solid var(--gemini-secondary);
+  padding-left: 16px;
+  max-width: 512px;
+  flex-grow: 1;
+}
+
+.card-text-small {
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  border: none;
+  padding-left: 0;
+}
+
+.card-text-large {
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+  border: none;
+  padding-left: 0;
+  line-height: 1.2;
+}
+
+.card-3:hover .card-text,
+.card-5:hover .card-text,
+.card-5:hover .card-text-large {
+  color: black;
+}
+
+/* Card 2 Full Background */
+.card-2-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Card 2 Content Overlay */
+.card-2-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(19, 19, 19, 0.6) 0%, rgba(19, 19, 19, 0.4) 100%);
+  transition: background 0.3s ease-out;
+}
+
+.card-2:hover .card-2-content {
+  background: linear-gradient(135deg, rgba(19, 19, 19, 0.85) 0%, rgba(19, 19, 19, 0.7) 100%);
+}
+
+.blur-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0) brightness(1.1) contrast(1.05) saturate(1.2);
+  transition: filter 0.3s ease-out;
+}
+
+.card-2:hover .blur-image {
+  filter: grayscale(1) brightness(0.3) contrast(0.7);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 45, 85, 0.2);
+  mix-blend-mode: multiply;
+  transition: background-color 0.3s ease-out;
+}
+
+.card-2:hover .image-overlay {
+  background-color: rgba(255, 45, 85, 0.05);
+}
+
+/* Card 2 Text Override for Better Readability */
+.card-2 .card-title {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-out;
+}
+
+.card-2:hover .card-title {
+  color: white;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.card-2 .card-number {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-out;
+}
+
+.card-2:hover .card-number {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.card-2 .card-text {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  border-left: 2px solid rgba(37, 244, 238, 0.9);
+  transition: all 0.3s ease-out;
+}
+
+.card-2:hover .card-text {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  border-left: 2px solid rgba(37, 244, 238, 0.7);
+}
+
+/* Card 3 Trending Icon */
+.trending-icon {
+  font-size: 4.375rem;
+  color: var(--gemini-primary);
+  margin-top: auto;
+}
+
+.card-3:hover .trending-icon {
+  color: black;
+}
+
+/* Card 4 List */
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: auto;
+}
+
+.card-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gemini-on-surface-variant);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.list-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: var(--gemini-primary);
+}
+
+/* Card 5 Progress Bars */
+.progress-bars {
+  margin-top: 32px;
+  display: flex;
+  gap: 8px;
+}
+
+.progress-bar {
+  height: 4px;
+  flex: 1;
+}
+
+.bar-1,
+.bar-3 {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bar-2 {
+  background-color: var(--gemini-primary);
+}
+
+.card-5:hover .bar-1,
+.card-5:hover .bar-3 {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.card-5:hover .bar-2 {
+  background-color: black;
+}
+
+/* Transition Text */
+.transition-text {
+  margin-top: 48px;
+  text-align: center;
+  font-family: var(--font-headline);
+  color: var(--gemini-secondary);
+  font-size: 1.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Call to Action */
+.pain-points-cta {
+  background-color: var(--gemini-primary);
+  padding: 48px clamp(24px, 4vw, 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .pain-points-cta {
+    flex-direction: row;
+    padding: 96px clamp(24px, 4vw, 80px);
+  }
+}
+
+.cta-title {
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 400;
+  color: black;
+  line-height: 0.9;
+  max-width: 512px;
+}
+
+.cta-accent {
+  color: white;
+}
+
+.cta-button {
+  background-color: black;
+  color: white;
+  padding: 24px 48px;
+  font-size: 1.5rem;
+  font-family: var(--font-headline);
+  border: none;
+  cursor: pointer;
+  transition: all 50ms steps(1);
+  text-transform: uppercase;
+}
+
+.cta-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Mobile Responsive */
+@media (max-width: 767px) {
+  .bento-card {
+    padding: 24px;
+    min-height: 300px;
+  }
+
+  .card-header {
+    margin-bottom: 32px;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  .card-number {
+    font-size: 2rem;
+  }
+
+  .card-title {
+    font-size: 1.75rem;
+  }
+
+  .card-title-small {
+    font-size: 1.5rem;
+  }
+}

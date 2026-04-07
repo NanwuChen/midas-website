@@ -1,0 +1,478 @@
+/* ========================================
+   GET STARTED — Form Page Styles
+   ======================================== */
+
+/* Font Overrides to match How We Work "Three Pillars of Conversion" */
+.getstarted__headline {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 900 !important;
+  font-style: italic !important;
+  text-transform: uppercase !important;
+}
+
+.getstarted__copy .text-label,
+.getstarted__process-number {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.getstarted__subtext,
+.getstarted__form,
+.getstarted__process-desc,
+.getstarted__faq-question,
+.getstarted__faq-answer p,
+.getstarted__contact-text {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.getstarted__process-title {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+}
+
+.getstarted__faq-title,
+.getstarted__success-title {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+}
+
+/* Hero & Form Section */
+.getstarted {
+  background-color: var(--color-surface);
+}
+
+.getstarted__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-section);
+  align-items: center;
+}
+
+.getstarted__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-element);
+}
+
+.getstarted__headline {
+  margin-top: var(--space-tight);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.getstarted__subtext {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin-top: var(--space-tight);
+}
+
+/* Form Container & Card */
+.getstarted__form-container {
+  width: 100%;
+}
+
+.getstarted__form-card {
+  background-color: var(--color-surface-low);
+  border: 2px solid var(--color-surface-highest);
+  padding: var(--space-element);
+  position: relative;
+}
+
+/* Form Fields */
+.getstarted__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-tight);
+}
+
+.getstarted__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-micro);
+}
+
+.getstarted__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.getstarted__optional {
+  opacity: 0.5;
+}
+
+.getstarted__input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-surface-highest);
+  color: var(--color-text);
+  padding: var(--space-micro) 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease-out;
+}
+
+.getstarted__input:focus {
+  outline: none;
+  border-bottom-color: var(--color-digital-cyan);
+}
+
+.getstarted__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Radio Groups */
+.getstarted__radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-micro);
+  margin-top: var(--space-micro);
+}
+
+.getstarted__radio-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.getstarted__radio-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: color 0.15s ease-out;
+}
+
+.getstarted__radio-option:hover {
+  color: var(--color-text);
+}
+
+.getstarted__radio {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-electric-red);
+}
+
+.getstarted__radio-text {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s ease-out;
+}
+
+.getstarted__radio-option:hover .getstarted__radio-text {
+  color: var(--color-text);
+}
+
+/* Submit Section */
+.getstarted__submit-section {
+  margin-top: var(--space-tight);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-micro);
+}
+
+.getstarted__submit {
+  width: 100%;
+  background-color: var(--color-electric-red);
+  color: var(--color-on-red);
+  border: none;
+  padding: 20px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.15s ease-out;
+}
+
+.getstarted__submit:hover {
+  background-color: var(--color-digital-cyan);
+  color: var(--color-on-cyan);
+}
+
+.getstarted__submit-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Success State */
+.getstarted__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-section) 0;
+  gap: var(--space-element);
+}
+
+.getstarted__success-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-electric-red);
+}
+
+.getstarted__success-text {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-element);
+}
+
+.getstarted__back-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-micro);
+}
+
+/* What Happens Next */
+.getstarted__process {
+  border-top: 2px solid var(--color-surface-highest);
+}
+
+.getstarted__process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 2px solid var(--color-surface-highest);
+}
+
+.getstarted__process-item {
+  padding: var(--space-block);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-tight);
+  border-right: 2px solid var(--color-surface-highest);
+  transition: all 0.3s ease-out;
+}
+
+/* Step 01 - White Background */
+.getstarted__process-item:nth-child(1) {
+  background-color: var(--color-text);
+  color: var(--color-surface);
+}
+
+.getstarted__process-item:nth-child(1) .getstarted__process-icon {
+  color: var(--color-electric-red);
+}
+
+.getstarted__process-item:nth-child(1) .getstarted__process-desc {
+  color: var(--color-surface-high);
+}
+
+/* Step 02 - Black Background */
+.getstarted__process-item:nth-child(2) {
+  background-color: var(--color-surface-lowest);
+  color: var(--color-text);
+}
+
+.getstarted__process-item:nth-child(2) .getstarted__process-icon {
+  color: var(--color-deep-purple);
+}
+
+.getstarted__process-item:nth-child(2) .getstarted__process-desc {
+  color: var(--color-text-muted);
+}
+
+/* Step 03 - Red Background */
+.getstarted__process-item:nth-child(3) {
+  background-color: var(--color-electric-red);
+  color: var(--color-text);
+}
+
+.getstarted__process-item:nth-child(3) .getstarted__process-icon {
+  color: var(--color-text);
+}
+
+.getstarted__process-item:nth-child(3) .getstarted__process-desc {
+  color: rgba(229, 226, 225, 0.9);
+}
+
+.getstarted__process-icon {
+  color: var(--color-electric-red);
+}
+
+.getstarted__process-icon svg {
+  stroke-width: 1.5;
+}
+
+.getstarted__process-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-micro);
+}
+
+.getstarted__process-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.getstarted__process-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.getstarted__process-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* FAQ Section */
+.getstarted__faq {
+  padding: var(--space-section) var(--space-element);
+}
+
+.getstarted__faq-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  text-align: center;
+  margin-bottom: var(--space-block);
+}
+
+.getstarted__faq-list {
+  max-width: 768px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-tight);
+}
+
+.getstarted__faq-item {
+  border: 1px solid var(--color-surface-highest);
+  background-color: var(--color-surface);
+}
+
+.getstarted__faq-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-element);
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background-color 0.15s ease-out;
+}
+
+.getstarted__faq-toggle:hover {
+  background-color: rgba(42, 42, 42, 0.2);
+}
+
+.getstarted__faq-question {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.getstarted__faq-icon {
+  color: var(--color-electric-red);
+  font-size: 1.25rem;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: transform 0.2s ease-out;
+}
+
+.getstarted__faq-item.open .getstarted__faq-icon {
+  transform: rotate(45deg);
+}
+
+.getstarted__faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  border-top: 1px solid rgba(42, 42, 42, 0.5);
+}
+
+.getstarted__faq-item.open .getstarted__faq-answer {
+  max-height: 200px;
+  padding: var(--space-element);
+  padding-top: var(--space-element);
+}
+
+.getstarted__faq-answer p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Alternative Contact */
+.getstarted__contact {
+  padding: var(--space-element);
+  border-top: 2px solid var(--color-surface-highest);
+}
+
+.getstarted__contact-text {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.getstarted__contact-link {
+  color: var(--color-text);
+  font-weight: 700;
+  transition: color 0.15s ease-out;
+}
+
+.getstarted__contact-link:hover {
+  color: var(--color-electric-red);
+  text-decoration: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .getstarted__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-block);
+  }
+
+  .getstarted__form-card {
+    padding: var(--space-element);
+  }
+
+  .getstarted__process-grid {
+    grid-template-columns: 1fr;
+    border-left: none;
+  }
+
+  .getstarted__process-item {
+    border-right: none;
+    border-bottom: 2px solid var(--color-surface-highest);
+  }
+
+  .getstarted__process-item:last-child {
+    border-bottom: none;
+  }
+
+  .getstarted__faq-list {
+    margin: 0;
+  }
+}

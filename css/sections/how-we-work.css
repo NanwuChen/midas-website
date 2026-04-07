@@ -1,0 +1,606 @@
+/* ========================================
+   HOW WE WORK — Framework, Trinity, Deep Dives, Timeline
+   ======================================== */
+
+/* Font Overrides for How We Work Page */
+
+/* Titles that should match "The Cultural Gap" font (Inter 900 italic uppercase) */
+.howwork__trinity-title,
+.howwork__deep-dive-title,
+.howwork__timeline-title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 900 !important;
+  font-style: italic !important;
+  text-transform: uppercase !important;
+}
+
+/* Titles that should match "Native Editorial" font (Bebas Neue) */
+.howwork__framework-hero-title,
+.howwork__trinity-card-title,
+.howwork__deep-dive-section-title,
+.howwork__timeline-step-title {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.howwork__trinity-header *,
+.howwork__deep-dive-content *,
+.howwork__timeline-inner *,
+.howwork__trinity-card-description,
+.howwork__deep-dive-subtitle,
+.howwork__deep-dive-list-text,
+.howwork__timeline-step-description {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.howwork__trinity-label,
+.howwork__deep-dive-phase,
+.howwork__timeline-step-number {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* Framework Hero Section */
+.howwork__framework-hero {
+  position: relative;
+  padding: var(--space-section) var(--space-element);
+  background-color: var(--color-electric-red);
+  background-image: url('../../assets/images/tiktok-phones-hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-top: 2px solid var(--color-surface-high);
+  border-bottom: 2px solid var(--color-surface-high);
+  overflow: hidden;
+}
+
+.howwork__framework-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-electric-red);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+
+.howwork__framework-hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.howwork__framework-hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.85;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-element);
+  color: var(--color-text);
+}
+
+.howwork__framework-hero-accent {
+  color: var(--color-text);
+}
+
+.howwork__framework-hero-cta {
+  background-color: var(--color-text);
+  color: var(--color-electric-red);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: 2px solid var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.howwork__framework-hero-cta:hover {
+  background-color: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.howwork__framework-hero-cta::after {
+  content: '→';
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+/* Trinity System Section */
+.howwork__trinity {
+  padding: var(--space-section) var(--space-element);
+}
+
+.howwork__trinity-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.howwork__trinity-header {
+  margin-bottom: var(--space-block);
+}
+
+.howwork__trinity-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-digital-cyan);
+  border-left: 4px solid var(--color-digital-cyan);
+  padding-left: var(--space-tight);
+  margin-bottom: var(--space-tight);
+  display: inline-block;
+}
+
+.howwork__trinity-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.howwork__trinity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-element);
+}
+
+.howwork__trinity-card {
+  background-color: var(--color-surface);
+  padding: var(--space-element);
+  border: 2px solid var(--color-surface-high);
+  transition: border-color 0.2s ease-out;
+  position: relative;
+}
+
+.howwork__trinity-card:hover {
+  border-color: var(--color-electric-red);
+}
+
+.howwork__trinity-card-icon {
+  font-size: 2.5rem;
+  font-family: 'Material Symbols Outlined';
+  color: var(--color-electric-red);
+  margin-bottom: var(--space-element);
+  display: block;
+}
+
+.howwork__trinity-card--production .howwork__trinity-card-icon {
+  color: var(--color-electric-red);
+}
+
+.howwork__trinity-card--iteration .howwork__trinity-card-icon {
+  color: var(--color-deep-purple);
+}
+
+.howwork__trinity-card--iteration:hover {
+  border-color: var(--color-deep-purple);
+}
+
+.howwork__trinity-card--network .howwork__trinity-card-icon {
+  color: var(--color-digital-cyan);
+}
+
+.howwork__trinity-card--network:hover {
+  border-color: var(--color-digital-cyan);
+}
+
+.howwork__trinity-card-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: var(--space-tight);
+  transition: color 0.2s ease-out;
+}
+
+.howwork__trinity-card:hover .howwork__trinity-card-title {
+  color: var(--color-electric-red);
+}
+
+.howwork__trinity-card--iteration:hover .howwork__trinity-card-title {
+  color: var(--color-deep-purple);
+}
+
+.howwork__trinity-card--network:hover .howwork__trinity-card-title {
+  color: var(--color-digital-cyan);
+}
+
+.howwork__trinity-card-description {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-element);
+}
+
+.howwork__trinity-card-metric {
+  width: 100%;
+  background-color: var(--color-surface-highest);
+  height: 4px;
+  margin-bottom: var(--space-micro);
+}
+
+.howwork__trinity-card-metric-bar {
+  height: 100%;
+  background-color: var(--color-electric-red);
+  transition: width 0.8s ease-out;
+}
+
+.howwork__trinity-card--production .howwork__trinity-card-metric-bar {
+  width: 85%;
+}
+
+.howwork__trinity-card--iteration .howwork__trinity-card-metric-bar {
+  background-color: var(--color-deep-purple);
+  width: 92%;
+}
+
+.howwork__trinity-card--network .howwork__trinity-card-metric-bar {
+  background-color: var(--color-digital-cyan);
+  width: 78%;
+}
+
+.howwork__trinity-card-metric-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-electric-red);
+}
+
+.howwork__trinity-card--iteration .howwork__trinity-card-metric-text {
+  color: var(--color-deep-purple);
+}
+
+.howwork__trinity-card--network .howwork__trinity-card-metric-text {
+  color: var(--color-digital-cyan);
+}
+
+/* Deep Dives Section */
+.howwork__deep-dives {
+  padding: var(--space-section) var(--space-element);
+  background-color: var(--color-surface-low);
+}
+
+.howwork__deep-dives-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+}
+
+.howwork__deep-dive {
+  display: flex;
+  gap: var(--space-block);
+  align-items: center;
+}
+
+.howwork__deep-dive--reverse {
+  flex-direction: row-reverse;
+}
+
+.howwork__deep-dive-content {
+  flex: 0.8;
+}
+
+.howwork__deep-dive-image {
+  flex: 1.2;
+}
+
+.howwork__deep-dive-image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border: 2px solid var(--color-surface-high);
+}
+
+.howwork__deep-dive-phase {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-electric-red);
+  margin-bottom: var(--space-tight);
+}
+
+.howwork__deep-dive--iteration .howwork__deep-dive-phase {
+  color: var(--color-deep-purple);
+}
+
+.howwork__deep-dive-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.125rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: var(--space-element);
+}
+
+.howwork__deep-dive-title-accent {
+  color: var(--color-electric-red);
+}
+
+.howwork__deep-dive--iteration .howwork__deep-dive-title-accent {
+  color: var(--color-deep-purple);
+}
+
+.howwork__deep-dive-subtitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-element);
+}
+
+.howwork__deep-dive-section {
+  margin-bottom: var(--space-element);
+}
+
+.howwork__deep-dive-section-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-tight);
+}
+
+.howwork__deep-dive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.howwork__deep-dive-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.howwork__deep-dive-list-icon {
+  color: var(--color-electric-red);
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.howwork__deep-dive--iteration .howwork__deep-dive-list-icon {
+  color: var(--color-deep-purple);
+}
+
+.howwork__deep-dive-list-text {
+  line-height: 1.5;
+}
+
+.howwork__deep-dive-list-text strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Timeline Section */
+.howwork__timeline {
+  padding: var(--space-block) var(--space-element) var(--space-section) var(--space-element);
+  border-bottom: 2px solid var(--color-surface-high);
+}
+
+.howwork__timeline-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.howwork__timeline-header {
+  text-align: center;
+  margin-bottom: var(--space-block);
+}
+
+.howwork__timeline-title {
+  font-size: 1.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.howwork__timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-tight);
+}
+
+.howwork__timeline-step {
+  border-top: 2px solid var(--color-surface-high);
+  padding: var(--space-element);
+  position: relative;
+  background-color: var(--color-surface);
+  margin-bottom: var(--space-tight);
+}
+
+.howwork__timeline-step::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: var(--space-tight);
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-surface-high);
+}
+
+.howwork__timeline-step--final::before {
+  background-color: var(--color-electric-red);
+}
+
+/* Black Background Cards */
+.howwork__timeline-step--black {
+  background-color: var(--color-surface-lowest);
+  color: var(--color-text);
+  transition: all 0.3s ease-out;
+}
+
+.howwork__timeline-step--black .howwork__timeline-step-number {
+  color: var(--color-electric-red);
+  transition: color 0.3s ease-out;
+}
+
+.howwork__timeline-step--black .howwork__timeline-step-title {
+  color: var(--color-text);
+  transition: color 0.3s ease-out;
+}
+
+.howwork__timeline-step--black .howwork__timeline-step-description {
+  color: var(--color-text-muted);
+  transition: color 0.3s ease-out;
+}
+
+/* Black Cards Hover - Flip to White */
+.howwork__timeline-step--black:hover {
+  background-color: var(--color-text);
+  color: var(--color-surface);
+}
+
+.howwork__timeline-step--black:hover .howwork__timeline-step-number {
+  color: var(--color-electric-red);
+}
+
+.howwork__timeline-step--black:hover .howwork__timeline-step-title {
+  color: var(--color-surface);
+}
+
+.howwork__timeline-step--black:hover .howwork__timeline-step-description {
+  color: var(--color-surface-high);
+}
+
+/* Red Background Cards */
+.howwork__timeline-step--red {
+  background-color: var(--color-electric-red);
+  color: var(--color-text);
+  transition: all 0.3s ease-out;
+}
+
+.howwork__timeline-step--red .howwork__timeline-step-number {
+  color: var(--color-text);
+  transition: color 0.3s ease-out;
+}
+
+.howwork__timeline-step--red .howwork__timeline-step-title {
+  color: var(--color-text);
+  transition: color 0.3s ease-out;
+}
+
+.howwork__timeline-step--red .howwork__timeline-step-description {
+  color: rgba(229, 226, 225, 0.9);
+  transition: color 0.3s ease-out;
+}
+
+/* Red Cards Hover - Flip to Black */
+.howwork__timeline-step--red:hover {
+  background-color: var(--color-surface-lowest);
+  color: var(--color-text);
+}
+
+.howwork__timeline-step--red:hover .howwork__timeline-step-number {
+  color: var(--color-electric-red);
+}
+
+.howwork__timeline-step--red:hover .howwork__timeline-step-title {
+  color: var(--color-text);
+}
+
+.howwork__timeline-step--red:hover .howwork__timeline-step-description {
+  color: var(--color-text-muted);
+}
+
+/* White Background Cards */
+.howwork__timeline-step--white {
+  background-color: var(--color-text);
+  color: var(--color-surface);
+  transition: all 0.3s ease-out;
+}
+
+.howwork__timeline-step--white .howwork__timeline-step-number {
+  color: var(--color-electric-red);
+  transition: color 0.3s ease-out;
+}
+
+.howwork__timeline-step--white .howwork__timeline-step-title {
+  color: var(--color-surface);
+  transition: color 0.3s ease-out;
+}
+
+.howwork__timeline-step--white .howwork__timeline-step-description {
+  color: var(--color-surface-high);
+  transition: color 0.3s ease-out;
+}
+
+/* White Cards Hover - Flip to Red */
+.howwork__timeline-step--white:hover {
+  background-color: var(--color-electric-red);
+  color: var(--color-text);
+}
+
+.howwork__timeline-step--white:hover .howwork__timeline-step-number {
+  color: var(--color-text);
+}
+
+.howwork__timeline-step--white:hover .howwork__timeline-step-title {
+  color: var(--color-text);
+}
+
+.howwork__timeline-step--white:hover .howwork__timeline-step-description {
+  color: rgba(229, 226, 225, 0.9);
+}
+
+.howwork__timeline-step-number {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-micro);
+}
+
+.howwork__timeline-step-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: var(--space-tight);
+}
+
+.howwork__timeline-step-description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .howwork__trinity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .howwork__deep-dive,
+  .howwork__deep-dive--reverse {
+    flex-direction: column;
+  }
+
+  .howwork__timeline-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-tight);
+  }
+
+  /* Framework hero background optimization for mobile */
+  .howwork__framework-hero {
+    background-position: center center;
+    background-size: cover;
+  }
+}

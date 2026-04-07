@@ -1,0 +1,272 @@
+/* ========================================
+   S9: CTA — Call to action (Gemini Style)
+   ======================================== */
+
+.cta-section {
+  background-color: #131313;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Main CTA Content */
+.cta-section__main {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 clamp(24px, 4vw, 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.cta-section__label {
+  display: inline-block;
+  background-color: #05ECE7;
+  color: #006764;
+  font-weight: 900;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+}
+
+.cta-section__headline {
+  font-family: 'Inter', sans-serif; /* Inter字体 */
+  font-size: clamp(3rem, 6vw, 8rem); /* 响应式：48px~128px */
+  font-weight: 900; /* 最粗字重 */
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em; /* 略微紧缩字间距 */
+  color: white; /* 白色 */
+  text-transform: uppercase; /* 全大写 */
+  margin-bottom: 4rem; /* 下边距 */
+  max-width: 80rem;
+}
+
+/* Buttons */
+.cta-section__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .cta-section__buttons {
+    flex-direction: row;
+    width: auto;
+  }
+}
+
+.cta-section__btn-primary {
+  background-color: #FF2D55;
+  color: #40000C;
+  font-size: 1.125rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  letter-spacing: -0.025em;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.cta-section__btn-primary:hover {
+  background-color: #25F4EE;
+}
+
+.cta-section__arrow {
+  font-size: 1.5rem;
+  font-weight: 900;
+  transform: translateX(0);
+  transition: transform 0.2s ease;
+}
+
+.cta-section__btn-primary:hover .cta-section__arrow {
+  transform: translateX(0.5rem);
+}
+
+.cta-section__btn-secondary {
+  border: 2px solid #5d3f40;
+  background: transparent;
+  color: #e5e2e1;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  letter-spacing: -0.025em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.cta-section__btn-secondary:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* Dynamic Image Blocks */
+.cta-section__blocks {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #1C1B1B;
+  border-top: 1px solid #353534;
+  border-bottom: 1px solid #353534;
+}
+
+@media (min-width: 768px) {
+  .cta-section__blocks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual Blocks */
+.cta-section__block {
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid #353534;
+}
+
+.cta-section__block:last-child {
+  border-right: none;
+}
+
+/* Image Blocks */
+.cta-section__block img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.cta-section__block:hover img {
+  filter: grayscale(0);
+  transform: scale(1.05);
+}
+
+.cta-section__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+  transition: background-color 0.3s ease;
+}
+
+.cta-section__overlay--red {
+  background-color: rgba(255, 45, 85, 0.2);
+}
+
+.cta-section__overlay--cyan {
+  background-color: rgba(37, 244, 238, 0.2);
+}
+
+.cta-section__overlay--purple {
+  background-color: rgba(155, 93, 229, 0.2);
+}
+
+.cta-section__block:hover .cta-section__overlay {
+  background-color: transparent;
+}
+
+.cta-section__badge {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
+.cta-section__badge p {
+  font-size: 0.75rem;
+  font-weight: 900;
+  background-color: #000000;
+  padding: 0.5rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin: 0;
+}
+
+.cta-section__block:nth-child(1) .cta-section__badge p {
+  color: #FF2D55;
+}
+
+.cta-section__block:nth-child(3) .cta-section__badge p {
+  color: #9B5DE5;
+}
+
+/* Video Block */
+.cta-section__block--video {
+  background-color: #000000;
+}
+
+.cta-section__block--video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  filter: grayscale(1);
+  transition: all 0.3s ease;
+}
+
+.cta-section__block--video:hover video {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.cta-section__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 10;
+}
+
+.cta-section__icon {
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  color: #25F4EE;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.cta-section__title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+}
+
+.cta-section__desc {
+  font-size: 0.75rem;
+  color: #e6bcbd;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  max-width: 18rem;
+}

@@ -1,0 +1,323 @@
+/* ========================================
+   S8: MINDSET — Mindset Reframe (Gemini Style)
+   ======================================== */
+
+.mindset-reframe {
+  padding: 6rem 0;
+  background-color: #131313;
+}
+
+/* Header */
+.mindset-reframe__header {
+  padding: 0 clamp(24px, 4vw, 80px);
+  margin-bottom: 4rem;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mindset-reframe__label {
+  color: #25F4EE;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.mindset-reframe__title {
+  font-family: 'Inter', sans-serif; /* Inter字体 */
+  font-size: clamp(3rem, 6vw, 6rem); /* 响应式字号 */
+  font-weight: 900; /* 最粗字重 */
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em; /* 略微紧缩字间距 */
+  color: white; /* 白色 */
+  text-transform: uppercase; /* 全大写 */
+  margin-bottom: 2rem; /* 下边距 */
+}
+
+.mindset-reframe__title--accent {
+  color: #FF2D55; /* "REFRAME"红色强调 */
+}
+
+.mindset-reframe__description {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #e6bcbd;
+  max-width: 32rem;
+  border-left: 4px solid #25F4EE;
+  padding-left: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__description {
+    font-size: 1.5rem;
+  }
+}
+
+/* Strips Container */
+.mindset-reframe__strips {
+  border-top: 1px solid #353534;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Individual Strip */
+.mindset-reframe__strip {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #353534;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__strip {
+    flex-direction: row;
+  }
+}
+
+.mindset-reframe__strip:hover {
+  background: rgba(37, 244, 238, 0.1);
+}
+
+.mindset-reframe__strip--strategy:hover {
+  background: rgba(155, 93, 229, 0.1);
+}
+
+.mindset-reframe__strip--influence:hover {
+  background: rgba(255, 45, 85, 0.1);
+}
+
+/* Strip Category */
+.mindset-reframe__category {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #353534;
+  background-color: #1C1B1B;
+  transition: background-color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__category {
+    width: 25%;
+  }
+}
+
+.mindset-reframe__strip:hover .mindset-reframe__category {
+  background: transparent;
+}
+
+.mindset-reframe__number {
+  font-family: 'Inter', sans-serif; /* 与Mindset Reframe标题保持一致 */
+  font-size: clamp(1.5rem, 3vw, 2.5rem); /* 放大字体 */
+  font-weight: 900;
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em; /* 与标题保持一致 */
+  text-transform: uppercase;
+  color: #25F4EE;
+}
+
+.mindset-reframe__strip--strategy .mindset-reframe__number {
+  color: #9B5DE5;
+}
+
+.mindset-reframe__strip--influence .mindset-reframe__number {
+  color: #FF2D55;
+}
+
+.mindset-reframe__label-text {
+  font-family: 'Inter', sans-serif; /* 与DISCOVERY字体保持一致 */
+  font-size: clamp(1.5rem, 3vw, 3rem); /* 与DISCOVERY字体大小保持一致 */
+  font-weight: 900;
+  font-style: italic; /* 斜体 */
+  line-height: 0.8; /* 紧密行间距 */
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: #25F4EE;
+}
+
+.mindset-reframe__strip--strategy .mindset-reframe__label-text {
+  color: #9B5DE5;
+}
+
+.mindset-reframe__strip--influence .mindset-reframe__label-text {
+  color: #FF2D55;
+}
+
+.mindset-reframe__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__icon {
+    display: block;
+  }
+}
+
+/* Strip Content */
+.mindset-reframe__content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__content {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+/* Wrong Mindset */
+.mindset-reframe__wrong {
+  flex: 1;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__wrong {
+    text-align: left;
+  }
+}
+
+.mindset-reframe__wrong-label {
+  display: block;
+  color: #5d3f40;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.mindset-reframe__wrong-text {
+  font-family: "Bebas Neue", "Archivo Black", sans-serif; /* 与Remote content farms保持一致 */
+  font-size: clamp(1.5rem, 3vw, 1.875rem); /* 与card-title-small保持一致 */
+  font-weight: 400; /* 与card-title-small保持一致 */
+  line-height: 0.9; /* 紧密行高 */
+  text-decoration: line-through;
+  color: #e6bcbd;
+  opacity: 0.4;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+}
+
+/* Arrow */
+.mindset-reframe__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #25F4EE;
+  transform: translateX(0);
+  transition: transform 0.2s ease-out;
+}
+
+.mindset-reframe__strip--strategy .mindset-reframe__arrow {
+  color: #9B5DE5;
+}
+
+.mindset-reframe__strip--influence .mindset-reframe__arrow {
+  color: #FF2D55;
+}
+
+.mindset-reframe__strip:hover .mindset-reframe__arrow {
+  transform: translateX(1rem);
+}
+
+/* Right Mindset */
+.mindset-reframe__right {
+  flex: 1;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .mindset-reframe__right {
+    text-align: right;
+  }
+}
+
+.mindset-reframe__right-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: #25F4EE;
+}
+
+.mindset-reframe__strip--strategy .mindset-reframe__right-label {
+  color: #9B5DE5;
+}
+
+.mindset-reframe__strip--influence .mindset-reframe__right-label {
+  color: #FF2D55;
+}
+
+.mindset-reframe__right-text {
+  font-family: "Bebas Neue", "Archivo Black", sans-serif; /* 与Remote content farms保持一致 */
+  font-size: clamp(1.5rem, 3vw, 1.875rem); /* 与card-title-small保持一致 */
+  font-weight: 400; /* 与card-title-small保持一致 */
+  line-height: 0.9; /* 紧密行高 */
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  color: #25F4EE;
+}
+
+.mindset-reframe__strip--strategy .mindset-reframe__right-text {
+  color: #9B5DE5;
+}
+
+.mindset-reframe__strip--influence .mindset-reframe__right-text {
+  color: #FF2D55;
+}
+
+/* Accent Lines */
+.mindset-reframe__line {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.mindset-reframe__line--cyan {
+  background-color: #25F4EE;
+}
+
+.mindset-reframe__line--purple {
+  background-color: #9B5DE5;
+}
+
+.mindset-reframe__line--red {
+  background-color: #FF2D55;
+}
+
+.mindset-reframe__strip:hover .mindset-reframe__line {
+  opacity: 1;
+}
