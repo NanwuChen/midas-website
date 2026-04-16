@@ -1,0 +1,82 @@
+/* ========================================
+   DIFFERENTIATORS — "Why Us" at a Glance
+   ======================================== */
+
+.differentiators-section {
+  background-color: var(--color-surface-low);
+  padding: 80px clamp(24px, 4vw, 80px);
+}
+
+.differentiators-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.differentiators-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media (min-width: 768px) {
+  .differentiators-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .differentiators-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card */
+.differentiator-card {
+  padding: 40px 32px;
+  background-color: var(--color-surface);
+  border-top: 4px solid transparent;
+  transition: background-color 0.15s ease-out;
+  position: relative;
+}
+
+.differentiator-card:hover {
+  background-color: var(--color-surface-high);
+}
+
+/* Color accents per card */
+.differentiator-card--cyan { border-top-color: var(--color-digital-cyan); }
+.differentiator-card--purple { border-top-color: #9B5DE5; }
+.differentiator-card--red { border-top-color: var(--color-electric-red); }
+.differentiator-card--white { border-top-color: var(--color-text); }
+
+/* "Most" label */
+.differentiator__label {
+  font-family: "Bebas Neue", "Archivo Black", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+/* Keyword */
+.differentiator__keyword {
+  font-family: "Bebas Neue", "Archivo Black", sans-serif;
+  font-size: clamp(3rem, 5vw, 4rem);
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.differentiator-card--cyan .differentiator__keyword { color: var(--color-digital-cyan); }
+.differentiator-card--purple .differentiator__keyword { color: #9B5DE5; }
+.differentiator-card--red .differentiator__keyword { color: var(--color-electric-red); }
+.differentiator-card--white .differentiator__keyword { color: var(--color-text); }
+
+/* Description */
+.differentiator__desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}

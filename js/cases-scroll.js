@@ -1,128 +1,138 @@
 /**
- * Cases Preview Scroll Animation
- * 模拟Gemini的堆叠卡片滚动效果
+ * Cases — Handles both:
+ * 1. Homepage horizontal carousel (cases-preview-track)
+ * 2. Cases page stacked card reveal (cases-main)
  */
 
-class CasesScrollAnimation {
-  constructor() {
-    this.cards = document.querySelectorAll('.case-card');
-    this.init();
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.querySelector('.cases-preview-track');
 
-  init() {
-    if (this.cards.length === 0) return;
+  // === Homepage: Horizontal Carousel ===
+  if (track) {
+    const dots = document.querySelectorAll('.cases-preview-dot');
+    const cards = track.querySelectorAll('.case-card');
 
-    // 使用Intersection Observer来优化性能
-    this.setupIntersectionObserver();
+    function updateDots() {
+      let activeIndex = 0;
+      let minDistance = Infinity;
 
-    // 监听滚动事件
-    this.handleScroll();
-    window.addEventListener('scroll', this.throttle(this.handleScroll.bind(this), 16)); // 60fps
-  }
-
-  setupIntersectionObserver() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          // 添加延迟以创建层叠效果
-          const delay = Array.from(this.cards).indexOf(entry.target) * 100;
-          setTimeout(() => {
-            entry.target.classList.add('is-visible');
-          }, delay);
+      cards.forEach((card, i) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2 - track.offsetLeft;
+        const viewCenter = track.scrollLeft + track.clientWidth / 2;
+        const distance = Math.abs(cardCenter - viewCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeIndex = i;
         }
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '-10% 0px'
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex);
+      });
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset.slide);
+        const card = cards[index];
+        if (card) {
+          const scrollTo = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+          track.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        }
+      });
     });
 
-    this.cards.forEach(card => observer.observe(card));
+    track.addEventListener('scroll', updateDots);
+    return;
   }
 
-  handleScroll() {
+  // === Cases Page: Stacked card scroll reveal ===
+  const casesMain = document.querySelector('.cases-main');
+  if (!casesMain) return;
+
+  const cards = casesMain.querySelectorAll('.case-card');
+  if (cards.length === 0) return;
+
+  // Reveal cards on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = Array.from(cards).indexOf(entry.target) * 100;
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, delay);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '-10% 0px'
+  });
+
+  cards.forEach(card => observer.observe(card));
+
+  // Scroll-based scale + overlay effect
+  function handleScroll() {
     const scrollY = window.pageYOffset;
     const windowHeight = window.innerHeight;
 
-    this.cards.forEach((card, index) => {
+    cards.forEach(card => {
       const cardRect = card.getBoundingClientRect();
       const cardTop = cardRect.top + scrollY;
-      const cardHeight = cardRect.height;
-      const dataIndex = card.getAttribute('data-index');
-
-      // 计算滚动进度 - 当卡片开始离开视窗顶部时开始动画
       const scrollStart = cardTop;
-      const scrollEnd = cardTop - windowHeight * 1.5; // 1.5倍视窗高度的距离内完成动画
+      const scrollEnd = cardTop - windowHeight * 1.5;
       const scrollProgress = Math.max(0, Math.min(1, (scrollY - scrollStart) / (scrollEnd - scrollStart)));
 
-      // 更平滑的缩放曲线
-      const scaleProgress = this.easeOutQuart(scrollProgress);
-      const scale = 1 - (scaleProgress * 0.15); // 最大缩小15%
-      const opacity = scrollProgress * 0.6; // 最大透明度60%
+      const scaleProgress = 1 - Math.pow(1 - scrollProgress, 4);
+      const scale = 1 - (scaleProgress * 0.15);
+      const opacity = scrollProgress * 0.6;
 
-      // 调试日志（可选，用于测试）
-      // if (index === 0 && scrollProgress > 0) {
-      //   console.log(`Card ${dataIndex}: progress=${scrollProgress.toFixed(2)}, scale=${scale.toFixed(2)}`);
-      // }
-
-      // 应用变换
       if (scrollProgress > 0) {
         card.style.transform = `scale(${scale})`;
         card.style.transformOrigin = 'top center';
         const overlay = card.querySelector('.case-card__overlay');
-        if (overlay) {
-          overlay.style.opacity = Math.min(opacity, 0.6);
-        }
+        if (overlay) overlay.style.opacity = Math.min(opacity, 0.6);
       } else {
         card.style.transform = 'scale(1)';
         const overlay = card.querySelector('.case-card__overlay');
-        if (overlay) {
-          overlay.style.opacity = '0';
-        }
+        if (overlay) overlay.style.opacity = '0';
       }
     });
   }
 
-  // 缓动函数，让动画更自然
-  easeOutQuart(t) {
-    return 1 - Math.pow(1 - t, 4);
-  }
-
-  // 节流函数
-  throttle(func, limit) {
+  function throttle(func, limit) {
     let inThrottle;
     return function() {
-      const args = arguments;
-      const context = this;
       if (!inThrottle) {
-        func.apply(context, args);
+        func.apply(this, arguments);
         inThrottle = true;
         setTimeout(() => inThrottle = false, limit);
       }
+    };
+  }
+
+  handleScroll();
+  window.addEventListener('scroll', throttle(handleScroll, 16));
+
+  // If URL has a hash, reveal that card immediately
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target && target.classList.contains('case-card')) {
+      target.classList.add('is-visible');
+      // Small delay to let browser scroll to anchor
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
     }
   }
-}
 
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.case-card');
-
-  if (cards.length > 0) {
-    new CasesScrollAnimation();
-  }
+  // Inject reveal styles for cases page
+  const style = document.createElement('style');
+  style.textContent = `
+    .cases-main .case-card.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+  `;
+  document.head.appendChild(style);
 });
-
-// 添加reveal动画的CSS类
-const style = document.createElement('style');
-style.textContent = `
-  .case-card:not(.is-visible) {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-
-  .case-card.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-`;
-document.head.appendChild(style);
